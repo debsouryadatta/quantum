@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { Navigation } from "../components/Navigation";
@@ -59,7 +59,7 @@ interface Pagination {
   hasPreviousPage: boolean;
 }
 
-export default function BuildersPage() {
+function BuildersPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [builders, setBuilders] = useState<Builder[]>([]);
@@ -395,6 +395,45 @@ export default function BuildersPage() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function BuildersPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen flex-col bg-background">
+          <Navigation />
+          <main className="flex-1 container mx-auto px-4 py-8 max-w-7xl">
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-2">
+                <Users className="size-8 text-primary" />
+                <h1 className="text-3xl sm:text-4xl font-bold">All Builders</h1>
+              </div>
+              <p className="text-muted-foreground">
+                Discover talented builders and find your perfect teammate
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[...Array(6)].map((_, i) => (
+                <Card key={i}>
+                  <CardContent className="p-6">
+                    <Skeleton className="h-24 w-24 rounded-full mb-4" />
+                    <Skeleton className="h-6 w-3/4 mb-2" />
+                    <Skeleton className="h-4 w-1/2 mb-4" />
+                    <Skeleton className="h-4 w-full mb-2" />
+                    <Skeleton className="h-4 w-5/6" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </main>
+          <Footer />
+        </div>
+      }
+    >
+      <BuildersPageContent />
+    </Suspense>
   );
 }
 
