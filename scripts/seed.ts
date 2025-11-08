@@ -200,39 +200,8 @@ async function seed() {
     console.log(`⏱️  Duration: ${duration}s`);
     console.log("=".repeat(60) + "\n");
 
-    // Create vector indexes after seeding (as recommended in migration)
-    console.log("📊 Creating vector indexes for optimal search performance...");
-    try {
-      await prisma.$executeRaw`
-        CREATE INDEX IF NOT EXISTS idx_builders_profile_embedding 
-        ON builders USING ivfflat (profile_embedding vector_cosine_ops) 
-        WITH (lists = 100);
-      `;
-      console.log("✅ Created profile_embedding index");
-
-      await prisma.$executeRaw`
-        CREATE INDEX IF NOT EXISTS idx_builders_bio_embedding 
-        ON builders USING ivfflat (bio_embedding vector_cosine_ops) 
-        WITH (lists = 50);
-      `;
-      console.log("✅ Created bio_embedding index");
-
-      await prisma.$executeRaw`
-        CREATE INDEX IF NOT EXISTS idx_skills_embedding 
-        ON skills USING ivfflat (embedding vector_cosine_ops) 
-        WITH (lists = 50);
-      `;
-      console.log("✅ Created skills embedding index");
-
-      await prisma.$executeRaw`
-        CREATE INDEX IF NOT EXISTS idx_projects_embedding 
-        ON projects USING ivfflat (embedding vector_cosine_ops) 
-        WITH (lists = 50);
-      `;
-      console.log("✅ Created projects embedding index\n");
-    } catch (indexError) {
-      console.warn("⚠️  Warning: Could not create some indexes (they may already exist):", indexError);
-    }
+    // Note: Vector indexes are created by migrations, no need to create them here
+    console.log("📊 Vector indexes are managed by Prisma migrations.\n");
 
     console.log("🎉 Database seeding complete! You can now use the search functionality.\n");
   } catch (error) {

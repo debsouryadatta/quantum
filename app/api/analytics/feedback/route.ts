@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { z } from "zod";
+import { z } from 'zod/v3';
 import { auth } from "@clerk/nextjs/server";
 
 const FeedbackSchema = z.object({

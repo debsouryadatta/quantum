@@ -57,12 +57,9 @@ enum ProficiencyLevel {
   expert
 }
 
-enum AgentPhase {
-  planning
-  executing
-  evaluating
-  refining
-  complete
+enum ToolType {
+  ragSearch
+  keywordSearch
 }
 
 model Builder {
@@ -186,15 +183,15 @@ model SearchLog {
   query          String
   queryEmbedding Unsupported("vector(1536)")? @map("query_embedding")
 
-  // Agent reasoning
-  plannerThought  Json?   @map("planner_thought")
-  executionSteps  Json?   @map("execution_steps") // jsonb[]
-  evaluationScore Float?  @map("evaluation_score")
-  refinementCount Int     @default(0) @map("refinement_count")
+  // Chat-based search fields
+  toolCalls          Json?  @map("tool_calls") // Array of tool calls made during search
+  toolsUsed          Json?  @map("tools_used") // Array of ToolType enum values
+  conversationHistory Json? @map("conversation_history") // Array of chat messages
 
   // Results
   results      Json?  // jsonb[]
   topResultIds Json?  @map("top_result_ids") // string[]
+  resultCount  Int?   @map("result_count")
 
   // Interaction
   clickedResults Json?  @map("clicked_results") // string[]
@@ -214,16 +211,26 @@ model SearchLog {
   @@map("search_logs")
 }
 
-model AgentState {
-  id        String     @id @default(uuid())
-  sessionId String     @map("session_id")
-  createdAt DateTime   @default(now()) @map("created_at")
-  updatedAt DateTime   @updatedAt @map("updated_at")
+model ChatSession {
+  id        String   @id @default(uuid())
+  sessionId String   @unique @map("session_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
-  currentPhase AgentPhase @default(planning) @map("current_phase")
-  state         Json
+  // User info
+  userId    String?  @map("user_id")
+  userIp    String?  @map("user_ip")
+
+  // Conversation
+  messages  Json     // Array of chat messages
+  messageCount Int   @default(0) @map("message_count")
+
+  // Metadata
+  isActive  Boolean  @default(true) @map("is_active")
+  lastQuery String?  @map("last_query")
 
   @@index([sessionId])
-  @@index([currentPhase])
-  @@map("agent_states")
+  @@index([userId])
+  @@index([createdAt])
+  @@map("chat_sessions")
 }

@@ -5,7 +5,7 @@
 
 import { openaiModels } from "@/lib/ai/openrouter";
 import { generateObject } from "ai";
-import { z } from "zod";
+import { z } from 'zod/v3';
 import type { GitHubData } from "./github";
 
 const ProfileGenerationSchema = z.object({

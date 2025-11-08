@@ -3,7 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/db";
 import { fetchGitHubData } from "@/lib/services/github";
 import { generateProfileFromGitHub } from "@/lib/services/githubProfileGenerator";
-import { z } from "zod";
+import { z } from 'zod/v3';
 import { cache, cacheKeys } from "@/lib/services/cache";
 import { updateBuilderEmbeddings } from "@/lib/services/embeddings";
 

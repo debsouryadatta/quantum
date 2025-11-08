@@ -1,13 +1,15 @@
-# Quantum - AI-Powered Teammate Search
+# Quantum - Conversational AI Teammate Search
 
-An intelligent teammate matching system for hackathon builders. Find your perfect teammates using AI-powered semantic search. Built at Devfolio Tryout.
+An intelligent conversational AI agent for finding hackathon teammates. Chat naturally with an AI that asks clarifying questions and finds the perfect matches using semantic and keyword search. Built at Devfolio Tryout.
 
 ## Features
 
-- 🤖 **AI-Powered Search** - Multi-agent system that understands intent and finds the best matches
-- 🔍 **Hybrid Search** - Combines semantic and keyword search for accurate results
+- 💬 **Conversational AI Agent** - Chat naturally with an AI that asks clarifying questions to understand your needs
+- 🔍 **Intelligent Search** - Uses RAG (semantic) search and keyword search tools to find the best matches
+- 📝 **Conversation History** - All your chats are saved. Review past conversations or continue where you left off
+- 🎯 **Smart Matching** - Results include match explanations showing why each builder fits your needs
 - 👤 **Smart Profiles** - Import from GitHub with AI analysis or fill manually
-- ⚡ **Fast Performance** - Sub-3 second search results
+- ⚡ **Fast Performance** - Get relevant matches in seconds
 - 🔐 **Authentication** - Secure user authentication with Clerk
 
 ## Quick Start
@@ -51,11 +53,13 @@ Visit [http://localhost:3000](http://localhost:3000)
 - **Import from GitHub** - Automatically fill your profile using AI analysis of your GitHub repositories
 - Choose to replace all fields or fill empty ones only
 
-### Search System
-- Multi-agent orchestration (Planner, Executor, Evaluator)
-- Semantic search with vector embeddings
-- Smart ranking and filtering
-- Real-time search results
+### Conversational Search System
+- **Chat-based interface** - Have natural conversations with an AI agent
+- **Clarifying questions** - AI asks questions to better understand your needs before searching
+- **Dual search tools** - Uses RAG (semantic) search for conceptual matching and keyword search for specific skills
+- **Conversation history** - Sessions are saved and can be reviewed later (read-only after leaving)
+- **Match explanations** - Each result includes a reason explaining why the builder matches your query
+- **Session management** - Create new chats, view history, and manage conversations
 
 ## Environment Variables
 
