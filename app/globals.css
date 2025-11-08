@@ -140,6 +140,13 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-weight: var(--font-weight-bold);
   }
+  /* Prevent body scroll on search/chat page */
+  body:has([data-chat-interface]) {
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
   }
@@ -287,5 +294,17 @@
 
   .slide-in-from-bottom-2 {
     animation: fade-in-up 0.3s ease-out;
+  }
+
+  /* Hide scrollbars for textarea on mobile */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+    width: 0;
+    height: 0;
   }
 }

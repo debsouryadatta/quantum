@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, Suspense } from "react";
+import { useState, useEffect, useCallback, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { Navigation } from "../components/Navigation";
@@ -90,8 +90,20 @@ function BuildersPageContent() {
     };
   }, []);
 
-  // Fetch builders
-  const fetchBuilders = useCallback(async () => {
+  // Fetch builders - use refs to prevent multiple simultaneous calls and track state
+  const isFetchingRef = useRef(false);
+  const paginationRef = useRef(pagination);
+  
+  // Keep ref in sync with state
+  useEffect(() => {
+    paginationRef.current = pagination;
+  }, [pagination]);
+  
+  const fetchBuilders = useCallback(async (page?: number) => {
+    // Prevent multiple simultaneous calls
+    if (isFetchingRef.current) return;
+    
+    isFetchingRef.current = true;
     setLoading(true);
     try {
       const params = new URLSearchParams();
@@ -99,8 +111,11 @@ function BuildersPageContent() {
       if (roleFilter) params.set("role", roleFilter);
       if (experienceFilter) params.set("experienceLevel", experienceFilter);
       if (availabilityFilter) params.set("availabilityStatus", availabilityFilter);
-      params.set("page", pagination.page.toString());
-      params.set("limit", pagination.limit.toString());
+      
+      // Use provided page or current pagination.page from ref
+      const currentPage = page !== undefined ? page : paginationRef.current.page;
+      params.set("page", currentPage.toString());
+      params.set("limit", paginationRef.current.limit.toString());
 
       const response = await fetch(`/api/builders?${params.toString()}`);
       if (!response.ok) {
@@ -109,7 +124,7 @@ function BuildersPageContent() {
 
       const data = await response.json();
       setBuilders(data.builders || []);
-      setPagination(data.pagination || pagination);
+      setPagination(data.pagination);
 
       // Update URL without reloading
       const newUrl = `/builders${params.toString() ? `?${params.toString()}` : ""}`;
@@ -118,26 +133,28 @@ function BuildersPageContent() {
       console.error("Error fetching builders:", error);
     } finally {
       setLoading(false);
+      isFetchingRef.current = false;
     }
-  }, [searchQuery, roleFilter, experienceFilter, availabilityFilter, pagination.page, pagination.limit, router]);
+  }, [searchQuery, roleFilter, experienceFilter, availabilityFilter, router]);
 
-  // Debounced search
+  // Debounced search - resets to page 1
   const debouncedSearch = useCallback(
     debounce(() => {
-      setPagination((prev) => ({ ...prev, page: 1 })); // Reset to page 1 on new search
-      fetchBuilders();
+      fetchBuilders(1);
     }, 500),
     [fetchBuilders]
   );
 
-  // Initial load and when filters change
+  // Initial load and when filters/page change
   useEffect(() => {
     fetchBuilders();
-  }, [roleFilter, experienceFilter, availabilityFilter, pagination.page]);
+  }, [roleFilter, experienceFilter, availabilityFilter, pagination.page, fetchBuilders]);
 
   // Debounced search effect
   useEffect(() => {
-    debouncedSearch();
+    if (searchQuery !== undefined) {
+      debouncedSearch();
+    }
   }, [searchQuery, debouncedSearch]);
 
   const handlePageChange = (newPage: number) => {

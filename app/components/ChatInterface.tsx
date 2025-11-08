@@ -74,7 +74,10 @@ export function ChatInterface() {
   const [sessions, setSessions] = useState<ChatSession[]>([]);
   const [currentSessionId, setCurrentSessionId] = useState<string | null>(null);
   const [isCurrentSessionActive, setIsCurrentSessionActive] = useState(true);
+  const [selectOpen, setSelectOpen] = useState(false);
   const hasHandledInitialQueryRef = useRef(false);
+  const isCreatingSessionRef = useRef(false);
+  const isDeletingSessionRef = useRef(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -83,8 +86,22 @@ export function ChatInterface() {
   const adjustTextareaHeight = useCallback(() => {
     const textarea = textareaRef.current;
     if (textarea) {
+      // Reset height to get accurate scrollHeight
       textarea.style.height = "auto";
-      textarea.style.height = `${Math.min(textarea.scrollHeight, 200)}px`;
+      // Calculate new height with minimum height
+      const minHeight = 44; // Minimum height for mobile touch targets
+      const scrollHeight = textarea.scrollHeight;
+      const maxHeight = 200;
+      const newHeight = Math.max(scrollHeight, minHeight);
+      const finalHeight = Math.min(newHeight, maxHeight);
+      textarea.style.height = `${finalHeight}px`;
+      
+      // Only enable scrolling if content exceeds max height
+      if (scrollHeight > maxHeight) {
+        textarea.style.overflowY = 'auto';
+      } else {
+        textarea.style.overflowY = 'hidden';
+      }
     }
   }, []);
 
@@ -101,7 +118,13 @@ export function ChatInterface() {
     }
   }, []);
 
-  const createNewSession = useCallback(async () => {
+  const createNewSession = useCallback(async (preserveMessages = false) => {
+    // Prevent multiple simultaneous session creations
+    if (isCreatingSessionRef.current) {
+      return null;
+    }
+    
+    isCreatingSessionRef.current = true;
     try {
       const response = await fetch("/api/search/chat/sessions", {
         method: "POST",
@@ -110,13 +133,18 @@ export function ChatInterface() {
       if (response.ok) {
         const data = await response.json();
         setCurrentSessionId(data.sessionId);
-        setMessages([]);
+        // Only clear messages if not preserving them (e.g., when creating from initial query)
+        if (!preserveMessages) {
+          setMessages([]);
+        }
         setIsCurrentSessionActive(true); // New session is always active
         await loadSessions();
         return data.sessionId;
       }
     } catch (error) {
       console.error("Failed to create session:", error);
+    } finally {
+      isCreatingSessionRef.current = false;
     }
     return null;
   }, [loadSessions]);
@@ -124,21 +152,29 @@ export function ChatInterface() {
   const handleInitialQuery = useCallback(async (query: string) => {
     if (!query.trim()) return;
     
-    setIsLoading(true);
-    
-    // Create new session first
-    const sessionId = await createNewSession();
-    if (!sessionId) {
-      setIsLoading(false);
+    // Prevent multiple calls
+    if (isCreatingSessionRef.current) {
       return;
     }
-
-    // Add user message
+    
+    // Add user message IMMEDIATELY to show it right away
     const userMessage: ChatMessage = {
       role: "user",
       content: query,
     };
     setMessages([userMessage]);
+    
+    setIsLoading(true);
+    
+    // Create new session in the background, preserving the user message we just set
+    const sessionId = await createNewSession(true);
+    if (!sessionId) {
+      setIsLoading(false);
+      toast.error("Failed to create session", {
+        description: "Please try again",
+      });
+      return;
+    }
 
     try {
       const response = await fetch("/api/search/chat", {
@@ -179,12 +215,8 @@ export function ChatInterface() {
       };
       setMessages([userMessage, assistantMessage]);
 
-      // Update session
-      if (data.sessionId) {
-        setCurrentSessionId(data.sessionId);
-        setIsCurrentSessionActive(true); // New session is always active
-        await loadSessions();
-      }
+      // Session is already created and set, just reload sessions list to refresh
+      await loadSessions();
     } catch (error) {
       toast.error("Search Error", {
         description: error instanceof Error ? error.message : "An error occurred",
@@ -202,19 +234,26 @@ export function ChatInterface() {
   // Handle initial query from URL
   useEffect(() => {
     const query = searchParams.get("q");
-    if (query && !hasHandledInitialQueryRef.current && !isLoading) {
+    if (query && !hasHandledInitialQueryRef.current) {
       hasHandledInitialQueryRef.current = true; // Set ref immediately to prevent duplicate calls
       // Clear the query parameter from URL first to prevent re-triggering
       router.replace("/search", { scroll: false });
-      // Create new session and send the query
+      // Send the query immediately - message will appear right away
+      // Use the function directly without depending on it in the dependency array
       handleInitialQuery(query).catch(console.error);
     }
-  }, [searchParams, isLoading, router, handleInitialQuery]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams, router]); // Removed handleInitialQuery from dependencies to prevent re-triggers
 
   // Scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  // Initialize textarea height on mount
+  useEffect(() => {
+    adjustTextareaHeight();
+  }, [adjustTextareaHeight]);
 
   // Focus input on mount
   useEffect(() => {
@@ -252,9 +291,16 @@ export function ChatInterface() {
     }
   };
 
-  const deleteSession = async (sessionId: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    e.preventDefault();
+  const deleteSession = async (sessionId: string, e?: React.MouseEvent | React.PointerEvent) => {
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    
+    // Keep the select open while deleting
+    const wasOpen = selectOpen;
+    setSelectOpen(true);
+    
     try {
       const response = await fetch(`/api/search/chat/sessions/${sessionId}`, {
         method: "DELETE",
@@ -267,17 +313,26 @@ export function ChatInterface() {
           setMessages([]);
           setIsCurrentSessionActive(true);
         }
+        // Close select after deletion
+        setTimeout(() => {
+          setSelectOpen(false);
+          isDeletingSessionRef.current = false;
+        }, 100);
       } else {
         const errorData = await response.json().catch(() => ({}));
         toast.error("Failed to delete session", {
           description: errorData.error || "An error occurred",
         });
+        setSelectOpen(wasOpen);
+        isDeletingSessionRef.current = false;
       }
     } catch (error) {
       console.error("Failed to delete session:", error);
       toast.error("Failed to delete session", {
         description: error instanceof Error ? error.message : "An error occurred",
       });
+      setSelectOpen(wasOpen);
+      isDeletingSessionRef.current = false;
     }
   };
 
@@ -380,11 +435,11 @@ export function ChatInterface() {
   const inactiveSessions = sessions.filter(s => !s.isActive);
 
   return (
-    <div className="flex h-screen bg-background overflow-hidden">
+    <div data-chat-interface className="fixed inset-0 flex flex-col bg-background overflow-hidden" style={{ height: '100dvh' }}>
       {/* Main Chat Area */}
-      <div className="flex-1 flex flex-col min-w-0 relative">
+      <div className="flex-1 flex flex-col min-w-0 relative min-h-0">
         {/* Header */}
-        <div className="h-14 sm:h-16 md:h-20 border-b bg-card/50 backdrop-blur-sm flex items-center justify-between px-3 sm:px-4 md:px-6 shrink-0 sticky top-0 z-10">
+        <div className="h-14 sm:h-16 md:h-20 border-b bg-card/50 backdrop-blur-sm flex items-center justify-between px-3 sm:px-4 md:px-6 shrink-0 z-10">
           <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
             <Link 
               href="/"
@@ -413,7 +468,20 @@ export function ChatInterface() {
             {sessions.length > 0 && (
               <Select
                 value={currentSessionId || undefined}
+                open={selectOpen}
+                onOpenChange={(open) => {
+                  // Don't close if we're deleting
+                  if (isDeletingSessionRef.current && !open) {
+                    return;
+                  }
+                  setSelectOpen(open);
+                }}
                 onValueChange={(value) => {
+                  // Prevent value change if we're deleting a session
+                  if (isDeletingSessionRef.current) {
+                    return;
+                  }
+                  setSelectOpen(false);
                   if (value === "new") {
                     createNewSession();
                   } else {
@@ -433,7 +501,11 @@ export function ChatInterface() {
                       : "Select conversation"}
                   </SelectValue>
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent 
+                  className="max-h-[300px] overflow-y-auto max-w-[calc(100vw-1rem)] sm:max-w-none"
+                  sideOffset={4}
+                  alignOffset={0}
+                >
                   <SelectItem value="new">
                     <div className="flex items-center gap-2">
                       <Plus className="size-4" />
@@ -448,6 +520,17 @@ export function ChatInterface() {
                           key={session.sessionId} 
                           value={session.sessionId}
                           className="group/item"
+                          onPointerDown={(e) => {
+                            // Check if the click target is the delete button or its children
+                            const target = e.target as HTMLElement;
+                            const deleteButton = target.closest('button[aria-label="Delete session"]');
+                            if (deleteButton) {
+                              e.preventDefault();
+                              (e.nativeEvent as PointerEvent).stopImmediatePropagation();
+                              e.stopPropagation();
+                              return false;
+                            }
+                          }}
                         >
                           <div className="flex items-center justify-between w-full gap-2 flex-1 min-w-0">
                             <div className="flex items-center gap-2 flex-1 min-w-0">
@@ -457,8 +540,26 @@ export function ChatInterface() {
                               </span>
                             </div>
                             <button
-                              onClick={(e) => deleteSession(session.sessionId, e)}
-                              className="opacity-0 group-hover/item:opacity-100 transition-opacity p-1 hover:bg-destructive/10 rounded shrink-0 pointer-events-auto"
+                              onPointerDown={(e) => {
+                                e.preventDefault();
+                                (e.nativeEvent as PointerEvent).stopImmediatePropagation();
+                                e.stopPropagation();
+                                // Set deleting flag immediately
+                                isDeletingSessionRef.current = true;
+                                // Call delete immediately
+                                deleteSession(session.sessionId, e);
+                              }}
+                              onMouseDown={(e) => {
+                                e.preventDefault();
+                                (e.nativeEvent as MouseEvent).stopImmediatePropagation();
+                                e.stopPropagation();
+                              }}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                (e.nativeEvent as MouseEvent).stopImmediatePropagation();
+                                e.stopPropagation();
+                              }}
+                              className="opacity-100 p-1 hover:bg-destructive/10 active:bg-destructive/20 rounded shrink-0 pointer-events-auto z-10 relative"
                               aria-label="Delete session"
                               type="button"
                             >
@@ -477,6 +578,17 @@ export function ChatInterface() {
                           key={session.sessionId} 
                           value={session.sessionId}
                           className="group/item"
+                          onPointerDown={(e) => {
+                            // Check if the click target is the delete button or its children
+                            const target = e.target as HTMLElement;
+                            const deleteButton = target.closest('button[aria-label="Delete session"]');
+                            if (deleteButton) {
+                              e.preventDefault();
+                              (e.nativeEvent as PointerEvent).stopImmediatePropagation();
+                              e.stopPropagation();
+                              return false;
+                            }
+                          }}
                         >
                           <div className="flex items-center justify-between w-full gap-2 flex-1 min-w-0">
                             <div className="flex items-center gap-2 flex-1 min-w-0">
@@ -486,8 +598,26 @@ export function ChatInterface() {
                               </span>
                             </div>
                             <button
-                              onClick={(e) => deleteSession(session.sessionId, e)}
-                              className="opacity-0 group-hover/item:opacity-100 transition-opacity p-1 hover:bg-destructive/10 rounded shrink-0 pointer-events-auto"
+                              onPointerDown={(e) => {
+                                e.preventDefault();
+                                (e.nativeEvent as PointerEvent).stopImmediatePropagation();
+                                e.stopPropagation();
+                                // Set deleting flag immediately
+                                isDeletingSessionRef.current = true;
+                                // Call delete immediately
+                                deleteSession(session.sessionId, e);
+                              }}
+                              onMouseDown={(e) => {
+                                e.preventDefault();
+                                (e.nativeEvent as MouseEvent).stopImmediatePropagation();
+                                e.stopPropagation();
+                              }}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                (e.nativeEvent as MouseEvent).stopImmediatePropagation();
+                                e.stopPropagation();
+                              }}
+                              className="opacity-100 p-1 hover:bg-destructive/10 active:bg-destructive/20 rounded shrink-0 pointer-events-auto z-10 relative"
                               aria-label="Delete session"
                               type="button"
                             >
@@ -504,7 +634,7 @@ export function ChatInterface() {
             
             {/* New Chat Button */}
             <Button
-              onClick={createNewSession}
+              onClick={() => createNewSession()}
               variant="default"
               size="sm"
               className="gap-1.5 sm:gap-2 h-9 sm:h-10 px-2 sm:px-3"
@@ -516,7 +646,7 @@ export function ChatInterface() {
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto overscroll-contain">
+        <div className="flex-1 overflow-y-auto overscroll-contain min-h-0">
           {messages.length === 0 ? (
             <div className="flex items-center justify-center h-full px-3 sm:px-4 md:px-6">
               <div className="text-center max-w-2xl w-full py-8 sm:py-12">
@@ -724,16 +854,16 @@ export function ChatInterface() {
         </div>
 
         {/* Input Area */}
-        <div className="border-t bg-card/50 backdrop-blur-sm shrink-0 sticky bottom-0 z-10">
-          <div className="max-w-4xl mx-auto px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-5">
+        <div className="border-t bg-card/50 backdrop-blur-sm shrink-0 z-10 overflow-hidden">
+          <div className="w-full max-w-4xl mx-auto px-2 sm:px-4 md:px-6 py-2.5 sm:py-4 md:py-5">
             {!isCurrentSessionActive && currentSessionId && (
-              <div className="mb-2 sm:mb-3 p-2.5 sm:p-3 rounded-lg bg-muted/50 border border-muted flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground">
+              <div className="mb-2 sm:mb-3 p-2 sm:p-3 rounded-lg bg-muted/50 border border-muted flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground">
                 <History className="size-3.5 sm:size-4 shrink-0" />
-                <span className="leading-tight">This conversation is read-only. Start a new chat to continue.</span>
+                <span className="leading-tight break-words flex-1 min-w-0">This conversation is read-only. Start a new chat to continue.</span>
               </div>
             )}
-            <form onSubmit={handleSend} className="flex gap-1.5 sm:gap-2 md:gap-3 items-end">
-              <div className="flex-1 relative">
+            <form onSubmit={handleSend} className="flex gap-1.5 sm:gap-2 md:gap-3 items-end w-full">
+              <div className="flex-1 relative min-w-0 max-w-full">
                 <textarea
                   ref={textareaRef}
                   onInput={adjustTextareaHeight}
@@ -744,24 +874,37 @@ export function ChatInterface() {
                       : "Ask me anything about finding teammates..."
                   }
                   className={cn(
-                    "w-full resize-none rounded-xl border-2 bg-background px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-3.5 text-xs sm:text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-0 focus:border-primary/50 max-h-[200px] transition-all placeholder:text-muted-foreground/60",
+                    "w-full resize-none rounded-xl border-2 bg-background py-2.5 sm:py-3 md:py-3.5 px-2.5 sm:px-4 md:px-5 text-xs sm:text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-0 focus:border-primary/50 max-h-[200px] placeholder:text-muted-foreground/60",
+                    "overflow-x-hidden overflow-y-hidden scrollbar-hide",
+                    "box-border",
                     (!isCurrentSessionActive && currentSessionId) && "opacity-60 cursor-not-allowed"
                   )}
                   rows={1}
                   disabled={isLoading || (!isCurrentSessionActive && currentSessionId !== null)}
+                  style={{ 
+                    wordWrap: 'break-word', 
+                    overflowWrap: 'break-word',
+                    scrollbarWidth: 'none',
+                    msOverflowStyle: 'none',
+                    WebkitOverflowScrolling: 'touch',
+                    maxWidth: '100%',
+                    boxSizing: 'border-box',
+                    minHeight: '44px',
+                    height: '44px'
+                  }}
                 />
               </div>
               <Button
                 type="submit"
                 disabled={isLoading || !textareaRef.current?.value?.trim() || (!isCurrentSessionActive && currentSessionId !== null)}
                 size="icon"
-                className="shrink-0 size-10 sm:size-11 md:size-12 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className="shrink-0 size-9 sm:size-11 md:size-12 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed mb-0"
               >
                 <Send className="size-3.5 sm:size-4 md:size-5" />
               </Button>
             </form>
             {isCurrentSessionActive && (
-              <p className="text-[10px] sm:text-xs text-muted-foreground mt-1.5 sm:mt-2 text-center sm:text-left">
+              <p className="text-[10px] sm:text-xs text-muted-foreground mt-1.5 sm:mt-2 text-center sm:text-left break-words px-0.5">
                 Press Enter to send, Shift+Enter for new line
               </p>
             )}

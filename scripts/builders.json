@@ -778,6 +778,1332 @@
       "communicationStyle": "friendly",
       "interests": ["web accessibility", "CSS", "hiking"]
     }
+  },
+  {
+    "name": "Sarah Martinez",
+    "email": "sarah.martinez@example.com",
+    "bio": "Senior frontend engineer specializing in React and TypeScript. I build performant, accessible web applications with a focus on user experience and code quality.",
+    "role": "frontend",
+    "experienceLevel": "expert",
+    "yearsOfExperience": 7,
+    "location": "Austin, TX, USA",
+    "timezone": "CST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 30,
+    "preferredWorkingHours": "9am-3pm",
+    "github": "https://github.com/sarahmartinez",
+    "linkedin": "https://linkedin.com/in/sarahmartinez",
+    "twitter": "https://twitter.com/sarahmartinez",
+    "portfolio": "https://sarahmartinez.dev",
+    "skills": [
+      {
+        "name": "TypeScript",
+        "category": "language",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "React",
+        "category": "framework",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 6
+      },
+      {
+        "name": "Next.js",
+        "category": "framework",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Tailwind CSS",
+        "category": "framework",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Performance Optimization",
+        "category": "domain",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 5
+      }
+    ],
+    "projects": [
+      {
+        "title": "High-Performance Dashboard",
+        "description": "Built a real-time analytics dashboard handling millions of data points with React and WebSockets, achieving sub-100ms render times.",
+        "techStack": ["React", "TypeScript", "WebSockets"],
+        "role": "Senior Frontend Engineer",
+        "impact": "Reduced load times by 70% and improved user engagement by 40%.",
+        "url": null,
+        "startDate": "2021-01-01",
+        "endDate": "2022-06-01"
+      },
+      {
+        "title": "Design System Library",
+        "description": "Created a comprehensive design system component library used across 20+ products, improving consistency and developer productivity.",
+        "techStack": ["React", "TypeScript", "Storybook"],
+        "role": "Tech Lead",
+        "impact": "Reduced development time by 30% and improved design consistency across products.",
+        "url": "https://github.com/sarahmartinez/design-system",
+        "startDate": "2022-07-01",
+        "endDate": "2023-12-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [3, 4, 5],
+      "remotePreference": "remote",
+      "hackathonTypes": ["web apps", "productivity", "open source"],
+      "communicationStyle": "collaborative",
+      "interests": ["frontend architecture", "performance", "mentoring"]
+    }
+  },
+  {
+    "name": "James Anderson",
+    "email": "james.anderson@example.com",
+    "bio": "Backend engineer passionate about building scalable APIs and distributed systems. I enjoy solving complex technical challenges and optimizing system performance.",
+    "role": "backend",
+    "experienceLevel": "advanced",
+    "yearsOfExperience": 6,
+    "location": "Chicago, IL, USA",
+    "timezone": "CST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 20,
+    "preferredWorkingHours": "evenings",
+    "github": "https://github.com/jamesanderson",
+    "linkedin": "https://linkedin.com/in/jamesanderson",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "Java",
+        "category": "language",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 6
+      },
+      {
+        "name": "Spring Boot",
+        "category": "framework",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Redis",
+        "category": "tool",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Docker",
+        "category": "tool",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "API Design",
+        "category": "domain",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 6
+      }
+    ],
+    "projects": [
+      {
+        "title": "Payment Gateway API",
+        "description": "Developed a high-throughput payment processing API handling 10,000+ transactions per second using Spring Boot and Redis caching.",
+        "techStack": ["Java", "Spring Boot", "Redis"],
+        "role": "Backend Engineer",
+        "impact": "Achieved 99.9% uptime and processed over $100M in transactions.",
+        "url": null,
+        "startDate": "2020-03-01",
+        "endDate": "2022-01-01"
+      },
+      {
+        "title": "Real-time Notification Service",
+        "description": "Built a scalable notification service using WebSockets and message queues, delivering millions of notifications daily.",
+        "techStack": ["Java", "Spring Boot", "RabbitMQ"],
+        "role": "Senior Backend Engineer",
+        "impact": "Reduced notification latency by 80% and improved delivery rates to 99.5%.",
+        "url": null,
+        "startDate": "2022-02-01",
+        "endDate": "2023-10-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [4, 5],
+      "remotePreference": "hybrid",
+      "hackathonTypes": ["fintech", "infrastructure", "open source"],
+      "communicationStyle": "technical",
+      "interests": ["system design", "performance optimization", "gaming"]
+    }
+  },
+  {
+    "name": "Priya Patel",
+    "email": "priya.patel@example.com",
+    "bio": "Fullstack developer with expertise in modern JavaScript frameworks. I love building end-to-end solutions and working on products that make a difference.",
+    "role": "fullstack",
+    "experienceLevel": "advanced",
+    "yearsOfExperience": 5,
+    "location": "Mumbai, India",
+    "timezone": "IST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 35,
+    "preferredWorkingHours": "10am-6pm",
+    "github": "https://github.com/priyapatel",
+    "linkedin": "https://linkedin.com/in/priyapatel",
+    "twitter": null,
+    "portfolio": "https://priyapatel.dev",
+    "skills": [
+      {
+        "name": "JavaScript",
+        "category": "language",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "Vue.js",
+        "category": "framework",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Node.js",
+        "category": "framework",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "MongoDB",
+        "category": "tool",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "DevOps",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      }
+    ],
+    "projects": [
+      {
+        "title": "Healthcare Management System",
+        "description": "Developed a comprehensive healthcare management system for clinics, featuring patient records, appointments, and billing modules.",
+        "techStack": ["Vue.js", "Node.js", "MongoDB"],
+        "role": "Fullstack Developer",
+        "impact": "Served 50+ clinics and improved patient management efficiency by 45%.",
+        "url": null,
+        "startDate": "2021-06-01",
+        "endDate": "2022-12-01"
+      },
+      {
+        "title": "E-commerce Marketplace",
+        "description": "Built a multi-vendor e-commerce platform with real-time inventory management and payment integration.",
+        "techStack": ["Vue.js", "Node.js", "PostgreSQL"],
+        "role": "Lead Developer",
+        "impact": "Onboarded 500+ vendors and processed $5M+ in transactions.",
+        "url": null,
+        "startDate": "2023-01-01",
+        "endDate": "2023-11-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [3, 4, 5],
+      "remotePreference": "remote",
+      "hackathonTypes": ["healthcare", "social impact", "fintech"],
+      "communicationStyle": "collaborative",
+      "interests": ["fullstack development", "open source", "yoga"]
+    }
+  },
+  {
+    "name": "Michael Brown",
+    "email": "michael.brown@example.com",
+    "bio": "Product designer focused on creating intuitive user experiences. I combine user research, design thinking, and technical knowledge to build products users love.",
+    "role": "design",
+    "experienceLevel": "expert",
+    "yearsOfExperience": 8,
+    "location": "San Diego, CA, USA",
+    "timezone": "PST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 25,
+    "preferredWorkingHours": "10am-3pm",
+    "github": null,
+    "linkedin": "https://linkedin.com/in/michaelbrown",
+    "twitter": "https://twitter.com/michaelbrowndesign",
+    "portfolio": "https://michaelbrown.design",
+    "skills": [
+      {
+        "name": "Figma",
+        "category": "tool",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 6
+      },
+      {
+        "name": "Adobe XD",
+        "category": "tool",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "User Research",
+        "category": "domain",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 7
+      },
+      {
+        "name": "Prototyping",
+        "category": "domain",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 6
+      },
+      {
+        "name": "Design Systems",
+        "category": "domain",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      }
+    ],
+    "projects": [
+      {
+        "title": "Mobile Banking App Redesign",
+        "description": "Led the complete redesign of a mobile banking app, improving usability and increasing user satisfaction scores by 50%.",
+        "techStack": ["Figma", "Adobe XD"],
+        "role": "Lead Designer",
+        "impact": "Increased app downloads by 200% and improved user retention by 35%.",
+        "url": null,
+        "startDate": "2021-01-01",
+        "endDate": "2021-09-01"
+      },
+      {
+        "title": "Design System for SaaS Platform",
+        "description": "Created a comprehensive design system with 100+ components, improving design consistency and developer handoff efficiency.",
+        "techStack": ["Figma", "Storybook"],
+        "role": "Design System Lead",
+        "impact": "Reduced design-to-development time by 40% and improved UI consistency.",
+        "url": null,
+        "startDate": "2022-03-01",
+        "endDate": "2023-06-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [3, 4],
+      "remotePreference": "hybrid",
+      "hackathonTypes": ["design", "fintech", "startup"],
+      "communicationStyle": "collaborative",
+      "interests": ["UX research", "design systems", "photography"]
+    }
+  },
+  {
+    "name": "Lisa Zhang",
+    "email": "lisa.zhang@example.com",
+    "bio": "Machine learning engineer specializing in computer vision and NLP. I build AI models that solve real-world problems and improve people's lives.",
+    "role": "ml",
+    "experienceLevel": "expert",
+    "yearsOfExperience": 7,
+    "location": "Beijing, China",
+    "timezone": "CST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 20,
+    "preferredWorkingHours": "flexible",
+    "github": "https://github.com/lisazhang",
+    "linkedin": "https://linkedin.com/in/lisazhang",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "Python",
+        "category": "language",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 7
+      },
+      {
+        "name": "PyTorch",
+        "category": "framework",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "TensorFlow",
+        "category": "framework",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Computer Vision",
+        "category": "domain",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 6
+      },
+      {
+        "name": "Natural Language Processing",
+        "category": "domain",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      }
+    ],
+    "projects": [
+      {
+        "title": "Medical Image Analysis System",
+        "description": "Developed a deep learning system for detecting anomalies in medical images, achieving 95% accuracy and reducing diagnosis time by 60%.",
+        "techStack": ["Python", "PyTorch", "OpenCV"],
+        "role": "ML Engineer",
+        "impact": "Assisted doctors in diagnosing 10,000+ cases and improved early detection rates.",
+        "url": null,
+        "startDate": "2020-05-01",
+        "endDate": "2022-03-01"
+      },
+      {
+        "title": "Multilingual Chatbot",
+        "description": "Built an intelligent chatbot supporting 10+ languages using transformer models, improving customer service efficiency.",
+        "techStack": ["Python", "TensorFlow", "BERT"],
+        "role": "Senior ML Engineer",
+        "impact": "Handled 1M+ conversations and reduced response time by 70%.",
+        "url": null,
+        "startDate": "2022-04-01",
+        "endDate": "2023-10-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [3, 4, 5],
+      "remotePreference": "remote",
+      "hackathonTypes": ["AI challenges", "healthcare", "social impact"],
+      "communicationStyle": "technical",
+      "interests": ["deep learning", "research", "reading"]
+    }
+  },
+  {
+    "name": "Carlos Rodriguez",
+    "email": "carlos.rodriguez@example.com",
+    "bio": "Data scientist with expertise in predictive analytics and business intelligence. I transform data into actionable insights that drive strategic decisions.",
+    "role": "data",
+    "experienceLevel": "expert",
+    "yearsOfExperience": 8,
+    "location": "Barcelona, Spain",
+    "timezone": "CET",
+    "availabilityStatus": "busy",
+    "availabilityHoursPerWeek": 10,
+    "preferredWorkingHours": null,
+    "github": "https://github.com/carlosrodriguez",
+    "linkedin": "https://linkedin.com/in/carlosrodriguez",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "Python",
+        "category": "language",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 8
+      },
+      {
+        "name": "R",
+        "category": "language",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "SQL",
+        "category": "tool",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 8
+      },
+      {
+        "name": "Tableau",
+        "category": "tool",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Statistical Analysis",
+        "category": "domain",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 8
+      }
+    ],
+    "projects": [
+      {
+        "title": "Customer Churn Prediction Model",
+        "description": "Developed a machine learning model to predict customer churn, helping the company reduce churn rate by 25% through targeted interventions.",
+        "techStack": ["Python", "Scikit-learn", "SQL"],
+        "role": "Data Scientist",
+        "impact": "Saved $2M annually by reducing customer churn and improving retention strategies.",
+        "url": null,
+        "startDate": "2021-01-01",
+        "endDate": "2021-08-01"
+      },
+      {
+        "title": "Real-time Analytics Dashboard",
+        "description": "Built a comprehensive analytics dashboard providing real-time insights into business metrics, used by executives for strategic planning.",
+        "techStack": ["Python", "Tableau", "PostgreSQL"],
+        "role": "Senior Data Scientist",
+        "impact": "Enabled data-driven decision making and improved operational efficiency by 30%.",
+        "url": null,
+        "startDate": "2022-01-01",
+        "endDate": "2023-06-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [2, 3, 4],
+      "remotePreference": "hybrid",
+      "hackathonTypes": ["data science", "business", "analytics"],
+      "communicationStyle": "data-driven",
+      "interests": ["statistics", "data visualization", "soccer"]
+    }
+  },
+  {
+    "name": "Nina Petrov",
+    "email": "nina.petrov@example.com",
+    "bio": "Frontend developer passionate about creating beautiful, accessible web experiences. I specialize in React and modern CSS, always learning new techniques.",
+    "role": "frontend",
+    "experienceLevel": "intermediate",
+    "yearsOfExperience": 3,
+    "location": "Warsaw, Poland",
+    "timezone": "CET",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 30,
+    "preferredWorkingHours": "9am-3pm",
+    "github": "https://github.com/ninapetrov",
+    "linkedin": "https://linkedin.com/in/ninapetrov",
+    "twitter": null,
+    "portfolio": "https://ninapetrov.dev",
+    "skills": [
+      {
+        "name": "JavaScript",
+        "category": "language",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "React",
+        "category": "framework",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Sass",
+        "category": "language",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "Webpack",
+        "category": "tool",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "Accessibility",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      }
+    ],
+    "projects": [
+      {
+        "title": "E-commerce Product Page",
+        "description": "Developed a highly interactive product page with image galleries, reviews, and recommendation engine integration.",
+        "techStack": ["React", "Sass", "JavaScript"],
+        "role": "Frontend Developer",
+        "impact": "Improved conversion rates by 20% and enhanced user engagement.",
+        "url": null,
+        "startDate": "2022-01-01",
+        "endDate": "2022-06-01"
+      },
+      {
+        "title": "Accessibility Audit Tool",
+        "description": "Created a tool to audit website accessibility, helping teams identify and fix accessibility issues early in development.",
+        "techStack": ["React", "JavaScript"],
+        "role": "Developer",
+        "impact": "Helped 50+ websites improve their accessibility scores.",
+        "url": "https://github.com/ninapetrov/accessibility-audit",
+        "startDate": "2023-02-01",
+        "endDate": "2023-08-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [2, 3, 4],
+      "remotePreference": "remote",
+      "hackathonTypes": ["accessibility", "web apps", "social good"],
+      "communicationStyle": "friendly",
+      "interests": ["web accessibility", "CSS", "travel"]
+    }
+  },
+  {
+    "name": "Tommy Lee",
+    "email": "tommy.lee@example.com",
+    "bio": "Backend developer specializing in microservices and cloud-native applications. I build robust, scalable systems using modern technologies.",
+    "role": "backend",
+    "experienceLevel": "intermediate",
+    "yearsOfExperience": 4,
+    "location": "Seoul, South Korea",
+    "timezone": "KST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 25,
+    "preferredWorkingHours": "10am-4pm",
+    "github": "https://github.com/tommylee",
+    "linkedin": "https://linkedin.com/in/tommylee",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "Java",
+        "category": "language",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Spring Boot",
+        "category": "framework",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "MySQL",
+        "category": "tool",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Kafka",
+        "category": "tool",
+        "proficiencyLevel": "beginner",
+        "yearsOfExperience": 1
+      },
+      {
+        "name": "REST APIs",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 4
+      }
+    ],
+    "projects": [
+      {
+        "title": "Order Management System",
+        "description": "Developed a microservices-based order management system handling thousands of orders daily with high reliability.",
+        "techStack": ["Java", "Spring Boot", "MySQL"],
+        "role": "Backend Developer",
+        "impact": "Reduced order processing time by 50% and improved system reliability.",
+        "url": null,
+        "startDate": "2021-06-01",
+        "endDate": "2022-05-01"
+      },
+      {
+        "title": "Real-time Analytics API",
+        "description": "Built a real-time analytics API processing millions of events using Kafka and Spring Boot microservices.",
+        "techStack": ["Java", "Spring Boot", "Kafka"],
+        "role": "Backend Engineer",
+        "impact": "Enabled real-time insights for business teams and improved decision-making speed.",
+        "url": null,
+        "startDate": "2022-06-01",
+        "endDate": "2023-09-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [3, 4, 5],
+      "remotePreference": "hybrid",
+      "hackathonTypes": ["fintech", "e-commerce", "infrastructure"],
+      "communicationStyle": "collaborative",
+      "interests": ["microservices", "cloud computing", "gaming"]
+    }
+  },
+  {
+    "name": "Sophie Laurent",
+    "email": "sophie.laurent@example.com",
+    "bio": "Fullstack developer with a passion for clean code and user-centered design. I enjoy building products from concept to deployment.",
+    "role": "fullstack",
+    "experienceLevel": "intermediate",
+    "yearsOfExperience": 4,
+    "location": "Paris, France",
+    "timezone": "CET",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 30,
+    "preferredWorkingHours": "9am-3pm",
+    "github": "https://github.com/sophielaurent",
+    "linkedin": "https://linkedin.com/in/sophielaurent",
+    "twitter": null,
+    "portfolio": "https://sophielaurent.dev",
+    "skills": [
+      {
+        "name": "TypeScript",
+        "category": "language",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "React",
+        "category": "framework",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Node.js",
+        "category": "framework",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "PostgreSQL",
+        "category": "tool",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "GraphQL",
+        "category": "domain",
+        "proficiencyLevel": "beginner",
+        "yearsOfExperience": 1
+      }
+    ],
+    "projects": [
+      {
+        "title": "Social Media Platform",
+        "description": "Built a social media platform with real-time messaging, posts, and user interactions using React and Node.js.",
+        "techStack": ["React", "Node.js", "PostgreSQL"],
+        "role": "Fullstack Developer",
+        "impact": "Gained 10,000+ users and achieved high engagement rates.",
+        "url": null,
+        "startDate": "2021-09-01",
+        "endDate": "2022-08-01"
+      },
+      {
+        "title": "Task Management App",
+        "description": "Developed a collaborative task management application with real-time updates and team collaboration features.",
+        "techStack": ["React", "Node.js", "MongoDB"],
+        "role": "Fullstack Developer",
+        "impact": "Improved team productivity and project completion rates.",
+        "url": null,
+        "startDate": "2022-09-01",
+        "endDate": "2023-07-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [2, 3, 4],
+      "remotePreference": "flexible",
+      "hackathonTypes": ["social apps", "productivity", "education"],
+      "communicationStyle": "collaborative",
+      "interests": ["fullstack development", "design", "cooking"]
+    }
+  },
+  {
+    "name": "Ahmed Hassan",
+    "email": "ahmed.hassan@example.com",
+    "bio": "Product manager with a technical background, focusing on building products that solve real user problems. I bridge the gap between business and engineering.",
+    "role": "product",
+    "experienceLevel": "advanced",
+    "yearsOfExperience": 6,
+    "location": "Cairo, Egypt",
+    "timezone": "EET",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 20,
+    "preferredWorkingHours": "flexible",
+    "github": null,
+    "linkedin": "https://linkedin.com/in/ahmedhassan",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "Product Strategy",
+        "category": "domain",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 6
+      },
+      {
+        "name": "User Research",
+        "category": "domain",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "Analytics",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Agile",
+        "category": "domain",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 6
+      },
+      {
+        "name": "Stakeholder Management",
+        "category": "soft_skill",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 6
+      }
+    ],
+    "projects": [
+      {
+        "title": "Mobile App Launch",
+        "description": "Led the product strategy and launch of a mobile app that reached 100,000 downloads in the first 3 months.",
+        "techStack": ["Product Management", "Analytics"],
+        "role": "Product Manager",
+        "impact": "Achieved product-market fit and established a strong user base.",
+        "url": null,
+        "startDate": "2020-01-01",
+        "endDate": "2021-06-01"
+      },
+      {
+        "title": "SaaS Platform Redesign",
+        "description": "Managed the complete redesign of a SaaS platform, improving user satisfaction and reducing churn by 30%.",
+        "techStack": ["Product Management", "User Research"],
+        "role": "Senior Product Manager",
+        "impact": "Increased user retention and improved NPS scores significantly.",
+        "url": null,
+        "startDate": "2021-07-01",
+        "endDate": "2023-05-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [3, 4, 5],
+      "remotePreference": "remote",
+      "hackathonTypes": ["startup", "social impact", "fintech"],
+      "communicationStyle": "strategic",
+      "interests": ["product strategy", "user research", "reading"]
+    }
+  },
+  {
+    "name": "Zara Khan",
+    "email": "zara.khan@example.com",
+    "bio": "UI/UX designer creating beautiful and functional digital experiences. I focus on user-centered design and creating interfaces that delight users.",
+    "role": "design",
+    "experienceLevel": "intermediate",
+    "yearsOfExperience": 3,
+    "location": "Dubai, UAE",
+    "timezone": "GST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 30,
+    "preferredWorkingHours": "10am-4pm",
+    "github": null,
+    "linkedin": "https://linkedin.com/in/zarakhan",
+    "twitter": null,
+    "portfolio": "https://zarakhan.design",
+    "skills": [
+      {
+        "name": "Figma",
+        "category": "tool",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Adobe Photoshop",
+        "category": "tool",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "User Interface Design",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Wireframing",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Design Thinking",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      }
+    ],
+    "projects": [
+      {
+        "title": "Fitness App Design",
+        "description": "Designed a complete fitness tracking app with workout plans, progress tracking, and social features.",
+        "techStack": ["Figma", "Adobe Photoshop"],
+        "role": "UI/UX Designer",
+        "impact": "Received positive user feedback and high app store ratings.",
+        "url": null,
+        "startDate": "2022-01-01",
+        "endDate": "2022-08-01"
+      },
+      {
+        "title": "E-commerce Website Redesign",
+        "description": "Redesigned an e-commerce website improving navigation, checkout flow, and overall user experience.",
+        "techStack": ["Figma"],
+        "role": "UX Designer",
+        "impact": "Increased conversion rates by 35% and reduced cart abandonment.",
+        "url": null,
+        "startDate": "2023-01-01",
+        "endDate": "2023-07-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [2, 3, 4],
+      "remotePreference": "remote",
+      "hackathonTypes": ["design", "healthcare", "e-commerce"],
+      "communicationStyle": "collaborative",
+      "interests": ["UI/UX design", "illustration", "travel"]
+    }
+  },
+  {
+    "name": "Ryan O'Connor",
+    "email": "ryan.oconnor@example.com",
+    "bio": "Backend engineer specializing in distributed systems and high-performance applications. I build systems that scale and perform under pressure.",
+    "role": "backend",
+    "experienceLevel": "expert",
+    "yearsOfExperience": 9,
+    "location": "Dublin, Ireland",
+    "timezone": "GMT",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 15,
+    "preferredWorkingHours": "flexible",
+    "github": "https://github.com/ryanoconnor",
+    "linkedin": "https://linkedin.com/in/ryanoconnor",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "C++",
+        "category": "language",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 8
+      },
+      {
+        "name": "Rust",
+        "category": "language",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "PostgreSQL",
+        "category": "tool",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 7
+      },
+      {
+        "name": "Distributed Systems",
+        "category": "domain",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 7
+      },
+      {
+        "name": "Performance Optimization",
+        "category": "domain",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 8
+      }
+    ],
+    "projects": [
+      {
+        "title": "High-Frequency Trading System",
+        "description": "Developed a low-latency trading system processing millions of orders per second using C++ and custom networking protocols.",
+        "techStack": ["C++", "PostgreSQL"],
+        "role": "Senior Backend Engineer",
+        "impact": "Achieved sub-millisecond latency and processed billions in trades.",
+        "url": null,
+        "startDate": "2018-01-01",
+        "endDate": "2021-12-01"
+      },
+      {
+        "title": "Distributed Database System",
+        "description": "Built a distributed database system with strong consistency guarantees and horizontal scaling capabilities.",
+        "techStack": ["Rust", "PostgreSQL"],
+        "role": "Principal Engineer",
+        "impact": "Enabled scaling to handle 10x more data and improved query performance.",
+        "url": "https://github.com/ryanoconnor/distributed-db",
+        "startDate": "2022-01-01",
+        "endDate": "2023-12-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [4, 5, 6],
+      "remotePreference": "remote",
+      "hackathonTypes": ["infrastructure", "fintech", "open source"],
+      "communicationStyle": "technical",
+      "interests": ["distributed systems", "performance", "hiking"]
+    }
+  },
+  {
+    "name": "Maya Singh",
+    "email": "maya.singh@example.com",
+    "bio": "Data scientist passionate about using machine learning to solve business problems. I specialize in predictive modeling and data-driven decision making.",
+    "role": "data",
+    "experienceLevel": "advanced",
+    "yearsOfExperience": 5,
+    "location": "Delhi, India",
+    "timezone": "IST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 30,
+    "preferredWorkingHours": "10am-5pm",
+    "github": "https://github.com/mayasingh",
+    "linkedin": "https://linkedin.com/in/mayasingh",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "Python",
+        "category": "language",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "Scikit-learn",
+        "category": "framework",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Pandas",
+        "category": "tool",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "Machine Learning",
+        "category": "domain",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Data Visualization",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      }
+    ],
+    "projects": [
+      {
+        "title": "Fraud Detection System",
+        "description": "Developed a machine learning model to detect fraudulent transactions, reducing false positives by 40% and improving detection accuracy.",
+        "techStack": ["Python", "Scikit-learn", "Pandas"],
+        "role": "Data Scientist",
+        "impact": "Saved $5M annually by preventing fraudulent transactions.",
+        "url": null,
+        "startDate": "2021-03-01",
+        "endDate": "2022-02-01"
+      },
+      {
+        "title": "Demand Forecasting Model",
+        "description": "Built a demand forecasting model for retail inventory management, improving forecast accuracy by 30%.",
+        "techStack": ["Python", "Pandas", "Time Series"],
+        "role": "Senior Data Scientist",
+        "impact": "Reduced inventory costs by 20% and improved stock availability.",
+        "url": null,
+        "startDate": "2022-03-01",
+        "endDate": "2023-08-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [2, 3, 4],
+      "remotePreference": "remote",
+      "hackathonTypes": ["data science", "fintech", "retail"],
+      "communicationStyle": "data-driven",
+      "interests": ["machine learning", "statistics", "yoga"]
+    }
+  },
+  {
+    "name": "Oliver Thompson",
+    "email": "oliver.thompson@example.com",
+    "bio": "Fullstack developer with expertise in modern web technologies. I enjoy building scalable applications and working with cutting-edge frameworks.",
+    "role": "fullstack",
+    "experienceLevel": "expert",
+    "yearsOfExperience": 10,
+    "location": "Melbourne, Australia",
+    "timezone": "AEST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 20,
+    "preferredWorkingHours": "flexible",
+    "github": "https://github.com/oliverthompson",
+    "linkedin": "https://linkedin.com/in/oliverthompson",
+    "twitter": "https://twitter.com/oliverthompson",
+    "portfolio": "https://oliverthompson.dev",
+    "skills": [
+      {
+        "name": "TypeScript",
+        "category": "language",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 6
+      },
+      {
+        "name": "React",
+        "category": "framework",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 8
+      },
+      {
+        "name": "Node.js",
+        "category": "framework",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 8
+      },
+      {
+        "name": "AWS",
+        "category": "tool",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "System Architecture",
+        "category": "domain",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 8
+      }
+    ],
+    "projects": [
+      {
+        "title": "Enterprise SaaS Platform",
+        "description": "Architected and built a large-scale SaaS platform serving 100,000+ users with React, Node.js, and AWS infrastructure.",
+        "techStack": ["React", "Node.js", "AWS", "PostgreSQL"],
+        "role": "Tech Lead",
+        "impact": "Scaled to serve enterprise clients and achieved 99.9% uptime.",
+        "url": null,
+        "startDate": "2019-01-01",
+        "endDate": "2022-06-01"
+      },
+      {
+        "title": "Real-time Collaboration Tool",
+        "description": "Built a real-time collaboration platform with live editing, video calls, and file sharing capabilities.",
+        "techStack": ["React", "Node.js", "WebSockets", "AWS"],
+        "role": "Principal Engineer",
+        "impact": "Enabled remote teams to collaborate effectively and improved productivity.",
+        "url": null,
+        "startDate": "2022-07-01",
+        "endDate": "2023-12-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [4, 5, 6],
+      "remotePreference": "remote",
+      "hackathonTypes": ["productivity", "collaboration", "enterprise"],
+      "communicationStyle": "technical",
+      "interests": ["system architecture", "fullstack development", "surfing"]
+    }
+  },
+  {
+    "name": "Isabella Rossi",
+    "email": "isabella.rossi@example.com",
+    "bio": "Frontend developer focused on creating delightful user experiences. I specialize in React and modern CSS, always pushing the boundaries of web design.",
+    "role": "frontend",
+    "experienceLevel": "advanced",
+    "yearsOfExperience": 5,
+    "location": "Rome, Italy",
+    "timezone": "CET",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 25,
+    "preferredWorkingHours": "10am-3pm",
+    "github": "https://github.com/isabellarossi",
+    "linkedin": "https://linkedin.com/in/isabellarossi",
+    "twitter": null,
+    "portfolio": "https://isabellarossi.dev",
+    "skills": [
+      {
+        "name": "JavaScript",
+        "category": "language",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "React",
+        "category": "framework",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Vue.js",
+        "category": "framework",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "CSS Animations",
+        "category": "domain",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Performance",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      }
+    ],
+    "projects": [
+      {
+        "title": "Interactive Data Visualization",
+        "description": "Created an interactive data visualization dashboard with smooth animations and real-time updates.",
+        "techStack": ["React", "D3.js", "CSS"],
+        "role": "Frontend Developer",
+        "impact": "Improved data comprehension and user engagement significantly.",
+        "url": null,
+        "startDate": "2021-05-01",
+        "endDate": "2022-02-01"
+      },
+      {
+        "title": "E-commerce Product Showcase",
+        "description": "Built a stunning product showcase with 3D interactions and immersive shopping experience.",
+        "techStack": ["React", "Three.js", "CSS"],
+        "role": "Senior Frontend Developer",
+        "impact": "Increased conversion rates by 45% and improved user engagement.",
+        "url": null,
+        "startDate": "2022-03-01",
+        "endDate": "2023-09-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [3, 4],
+      "remotePreference": "hybrid",
+      "hackathonTypes": ["web apps", "design", "e-commerce"],
+      "communicationStyle": "collaborative",
+      "interests": ["frontend development", "design", "art"]
+    }
+  },
+  {
+    "name": "Kenji Yamamoto",
+    "email": "kenji.yamamoto@example.com",
+    "bio": "Machine learning engineer specializing in natural language processing and recommendation systems. I build AI solutions that enhance user experiences.",
+    "role": "ml",
+    "experienceLevel": "advanced",
+    "yearsOfExperience": 5,
+    "location": "Osaka, Japan",
+    "timezone": "JST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 25,
+    "preferredWorkingHours": "flexible",
+    "github": "https://github.com/kenjiyamamoto",
+    "linkedin": "https://linkedin.com/in/kenjiyamamoto",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "Python",
+        "category": "language",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "PyTorch",
+        "category": "framework",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Transformers",
+        "category": "framework",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "Natural Language Processing",
+        "category": "domain",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Recommendation Systems",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      }
+    ],
+    "projects": [
+      {
+        "title": "Product Recommendation Engine",
+        "description": "Developed a recommendation system using collaborative filtering and deep learning, improving click-through rates by 35%.",
+        "techStack": ["Python", "PyTorch", "TensorFlow"],
+        "role": "ML Engineer",
+        "impact": "Increased sales by 25% through better product recommendations.",
+        "url": null,
+        "startDate": "2021-04-01",
+        "endDate": "2022-08-01"
+      },
+      {
+        "title": "Sentiment Analysis API",
+        "description": "Built a sentiment analysis API using transformer models to analyze customer feedback and reviews in real-time.",
+        "techStack": ["Python", "Transformers", "FastAPI"],
+        "role": "Senior ML Engineer",
+        "impact": "Enabled real-time sentiment tracking and improved customer service response times.",
+        "url": null,
+        "startDate": "2022-09-01",
+        "endDate": "2023-11-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [3, 4],
+      "remotePreference": "remote",
+      "hackathonTypes": ["AI challenges", "NLP", "e-commerce"],
+      "communicationStyle": "technical",
+      "interests": ["machine learning", "NLP", "anime"]
+    }
+  },
+  {
+    "name": "Elena Volkov",
+    "email": "elena.volkov@example.com",
+    "bio": "Product manager with a passion for building products that users love. I combine user insights, data, and business strategy to create successful products.",
+    "role": "product",
+    "experienceLevel": "expert",
+    "yearsOfExperience": 9,
+    "location": "Moscow, Russia",
+    "timezone": "MSK",
+    "availabilityStatus": "busy",
+    "availabilityHoursPerWeek": 10,
+    "preferredWorkingHours": null,
+    "github": null,
+    "linkedin": "https://linkedin.com/in/elenavolkov",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "Product Strategy",
+        "category": "domain",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 9
+      },
+      {
+        "name": "User Research",
+        "category": "domain",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 8
+      },
+      {
+        "name": "Data Analysis",
+        "category": "domain",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 6
+      },
+      {
+        "name": "Agile",
+        "category": "domain",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 9
+      },
+      {
+        "name": "Leadership",
+        "category": "soft_skill",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 7
+      }
+    ],
+    "projects": [
+      {
+        "title": "B2B SaaS Platform",
+        "description": "Led the product strategy for a B2B SaaS platform that grew from 0 to 10,000 paying customers in 2 years.",
+        "techStack": ["Product Management"],
+        "role": "VP Product",
+        "impact": "Achieved $10M ARR and established product-market fit.",
+        "url": null,
+        "startDate": "2018-01-01",
+        "endDate": "2020-12-01"
+      },
+      {
+        "title": "Mobile App Product Launch",
+        "description": "Managed the complete product lifecycle for a mobile app, from concept to launch, achieving 1M+ downloads.",
+        "techStack": ["Product Management"],
+        "role": "Senior Product Manager",
+        "impact": "Successfully launched product and achieved strong user adoption.",
+        "url": null,
+        "startDate": "2021-01-01",
+        "endDate": "2023-06-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [4, 5, 6],
+      "remotePreference": "hybrid",
+      "hackathonTypes": ["startup", "B2B", "mobile"],
+      "communicationStyle": "strategic",
+      "interests": ["product strategy", "leadership", "reading"]
+    }
   }
 ]
 
