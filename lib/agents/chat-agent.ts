@@ -1,4 +1,5 @@
 import { tool } from "ai";
+import { z } from 'zod/v3';
 import { openaiModels } from "@/lib/ai/openrouter";
 import { ragSearchTool, ragSearchSchema, type RagSearchParams } from "./tools/rag-search";
 import { keywordSearchTool, keywordSearchSchema, type KeywordSearchParams } from "./tools/keyword-search";
@@ -67,18 +68,20 @@ Only proceed to search when:
 
 SEARCH TOOLS:
 When you have enough information, use the available tools:
-1. ragSearch - for semantic/semantic similarity searches (best for conceptual queries like "creative problem solver" or "experienced team player")
-2. keywordSearch - for searching by specific keywords, names, skills, GitHub usernames, etc.
+1. processSearchQuery - RECOMMENDED: Combines both RAG and keyword search with intelligent scoring. Use this for most searches as it provides the best results by combining multiple search strategies.
+2. ragSearch - for semantic/semantic similarity searches (best for conceptual queries like "creative problem solver" or "experienced team player")
+3. keywordSearch - for searching by specific keywords, names, skills, GitHub usernames, etc.
 
-You can use both tools if appropriate - ragSearch for conceptual matching and keywordSearch for specific skill/name matching.
+PREFERRED APPROACH: Use processSearchQuery for most searches as it intelligently combines RAG and keyword search results with proper scoring. Only use individual tools (ragSearch/keywordSearch) if you need fine-grained control.
 
 AFTER GETTING RESULTS:
-1. Transform the tool results into the required schema format:
+1. If you used processSearchQuery: The results are already in the correct format with scores, matchReasons, and all required fields. Use them directly.
+2. If you used ragSearch or keywordSearch individually: Transform the tool results into the required schema format:
    - Use similarityScore (from ragSearch) or keywordScore (from keywordSearch) as the score (ensure it's between 0-1)
    - Generate a matchReason explaining why each builder matches the query based on their skills, bio, role, or projects
    - Map all fields correctly (builderId, name, role, skills, avatarUrl, bio, location)
-2. Provide a conversational response explaining what you found
-3. Include a friendly summary message
+3. Provide a conversational response explaining what you found
+4. Include a friendly summary message
 
 RESPONSE SCHEMA:
 For each result in your response:
@@ -154,6 +157,23 @@ export async function createChatAgent() {
         };
       },
     }),
+
+    processSearchQuery: tool({
+      description: "RECOMMENDED: Process a search query using combined RAG and keyword search with intelligent scoring. This tool automatically combines multiple search strategies and returns the best-scored results. Use this for most searches.",
+      inputSchema: z.object({
+        query: z.string().describe("The search query to find matching builders"),
+      }),
+      execute: async (params: { query: string }) => {
+        const searchResponse = await processSearchQuery(params.query, []);
+        return {
+          success: true,
+          type: searchResponse.type,
+          results: searchResponse.results,
+          message: searchResponse.message,
+          count: searchResponse.results.length,
+        };
+      },
+    }),
   };
 
   return { model, tools, systemPrompt: SYSTEM_PROMPT };
@@ -205,8 +225,24 @@ export async function processSearchQuery(
   // Combine and score results
   const scoredResults = combineAndScoreResults(ragResults, keywordResults, query);
 
-  // Format response
-  const topResults = scoredResults.slice(0, 10).map((result) => ({
+  // Validate builderIds exist in database before returning
+  const { prisma } = await import("@/lib/db");
+  const validBuilderIds = new Set<string>();
+  
+  if (scoredResults.length > 0) {
+    const builderIdsToCheck = scoredResults.map((r) => r.builderId);
+    const existingBuilders = await prisma.builder.findMany({
+      where: { id: { in: builderIdsToCheck } },
+      select: { id: true },
+    });
+    existingBuilders.forEach((b) => validBuilderIds.add(b.id));
+  }
+
+  // Format response, filtering out invalid builderIds
+  const topResults = scoredResults
+    .filter((result) => validBuilderIds.has(result.builderId))
+    .slice(0, 10)
+    .map((result) => ({
     builderId: result.builderId,
     name: result.name,
     role: result.role,

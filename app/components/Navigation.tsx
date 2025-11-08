@@ -34,6 +34,12 @@ export function Navigation() {
             Chat
           </Link>
           <Link
+            href="/builders"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Builders
+          </Link>
+          <Link
             href="/about"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
@@ -79,6 +85,13 @@ export function Navigation() {
                   className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted/50 rounded-lg px-3 py-2"
                 >
                   Chat
+                </Link>
+                <Link
+                  href="/builders"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted/50 rounded-lg px-3 py-2"
+                >
+                  Builders
                 </Link>
                 <Link
                   href="/about"

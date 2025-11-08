@@ -203,11 +203,47 @@ export async function POST(request: NextRequest) {
     });
 
     // Extract structured output
-    const structuredOutput = result.experimental_output || {
+    let structuredOutput = result.experimental_output || {
       response: result.text || "I couldn't find any matches for your query.",
       results: [],
       message: "I couldn't find any matches for your query. Try refining your search terms or being more specific.",
     };
+
+    // Validate and filter out invalid builderIds
+    if (structuredOutput.results && structuredOutput.results.length > 0) {
+      const builderIdsToValidate = structuredOutput.results.map((r: any) => r.builderId).filter(Boolean);
+      
+      if (builderIdsToValidate.length > 0) {
+        try {
+          const validBuilders = await prisma.builder.findMany({
+            where: { id: { in: builderIdsToValidate } },
+            select: { id: true },
+          });
+          const validBuilderIds = new Set(validBuilders.map((b) => b.id));
+          
+          // Filter out results with invalid builderIds
+          const filteredResults = structuredOutput.results.filter((r: any) => 
+            r.builderId && validBuilderIds.has(r.builderId)
+          );
+          
+          // Only update if we have valid results, otherwise keep original (might be a validation issue)
+          if (filteredResults.length > 0) {
+            structuredOutput = {
+              ...structuredOutput,
+              results: filteredResults,
+            };
+          } else {
+            // Log warning if all results were filtered out
+            console.warn(`All ${structuredOutput.results.length} results were filtered out during validation. BuilderIds:`, builderIdsToValidate.slice(0, 5));
+            // Keep original results - validation might be too strict or builderIds might be valid but not found
+            // This prevents losing all results due to a validation bug
+          }
+        } catch (validationError) {
+          console.error("Error validating builderIds:", validationError);
+          // Keep original results if validation fails
+        }
+      }
+    }
 
     // Update session with new messages
     const updatedMessages = [
@@ -339,12 +375,31 @@ async function logSearch({
 
     const topResultIds = searchResponse.results.map((r) => r.builderId);
 
-    // Build data object
+    // Sanitize toolCalls to remove large arrays (like embeddings) that shouldn't be logged
+    const sanitizedToolCalls = toolCalls
+      ? toolCalls.map((call: any) => ({
+          id: call.id,
+          toolName: call.toolName,
+          args: call.args,
+          // Only include metadata from toolResult, not full results with embeddings
+          toolResult: call.toolResult
+            ? {
+                success: call.toolResult.success,
+                count: call.toolResult.count,
+                // Don't include full results array - it might contain embeddings
+                resultsCount: Array.isArray(call.toolResult.results)
+                  ? call.toolResult.results.length
+                  : undefined,
+              }
+            : null,
+        }))
+      : null;
+
+    // Build data object (without queryEmbedding - it's Unsupported type)
     const logData: any = {
       sessionId,
       query,
-      queryEmbedding: queryEmbedding as any,
-      toolCalls: toolCalls || null,
+      toolCalls: sanitizedToolCalls,
       toolsUsed: toolsUsed.length > 0 ? toolsUsed : null,
       conversationHistory: conversationHistoryData.length > 0 ? conversationHistoryData : null,
       results: resultsData,
@@ -359,14 +414,33 @@ async function logSearch({
       logData.builderId = builderId;
     }
 
-    await executeWithRetry(async () => {
-      return await (prisma as any).searchLog.create({
+    // Create the search log first (without embedding)
+    const searchLog = await executeWithRetry(async () => {
+      return await prisma.searchLog.create({
         data: logData,
       });
     });
+
+    // Update with queryEmbedding using raw SQL (since it's Unsupported type)
+    if (queryEmbedding && queryEmbedding.length > 0) {
+      await executeWithRetry(async () => {
+        return await prisma.$executeRaw`
+          UPDATE search_logs 
+          SET query_embedding = ${`[${queryEmbedding.join(",")}]`}::vector(1536)
+          WHERE id = ${searchLog.id}
+        `;
+      });
+    }
   } catch (error) {
     // Log the error but don't throw - search logging is non-critical
-    console.error("Failed to log search:", error);
+    // Sanitize error to avoid logging large objects like embeddings
+    const errorMessage =
+      error instanceof Error
+        ? error.message
+        : typeof error === "string"
+          ? error
+          : "Unknown error";
+    console.error("Failed to log search:", errorMessage);
   }
 }
 

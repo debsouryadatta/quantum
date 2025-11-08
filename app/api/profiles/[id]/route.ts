@@ -18,6 +18,16 @@ export async function GET(
       });
     }
 
+    // Validate ID format (should be UUID)
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    if (!uuidRegex.test(id)) {
+      console.error(`Invalid builder ID format: ${id}`);
+      return NextResponse.json(
+        { error: "Invalid profile ID format" },
+        { status: 400 }
+      );
+    }
+
     const profile = await prisma.builder.findUnique({
       where: { id },
       include: {
@@ -30,7 +40,11 @@ export async function GET(
     });
 
     if (!profile) {
-      return NextResponse.json({ error: "Profile not found" }, { status: 404 });
+      console.error(`Builder not found with ID: ${id}`);
+      return NextResponse.json(
+        { error: "Profile not found", id },
+        { status: 404 }
+      );
     }
 
     // Increment profile views

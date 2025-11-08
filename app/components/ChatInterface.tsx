@@ -164,11 +164,18 @@ export function ChatInterface() {
 
       const data = await response.json();
 
+      // Debug logging
+      console.log("API Response:", { 
+        hasResults: !!data.results, 
+        resultsLength: data.results?.length || 0,
+        results: data.results?.slice(0, 2) // Log first 2 results for debugging
+      });
+
       // Add assistant message
       const assistantMessage: ChatMessage = {
         role: "assistant",
         content: data.response || data.message || "Here are the search results:",
-        results: data.results || [],
+        results: Array.isArray(data.results) ? data.results : [],
       };
       setMessages([userMessage, assistantMessage]);
 
@@ -247,20 +254,30 @@ export function ChatInterface() {
 
   const deleteSession = async (sessionId: string, e: React.MouseEvent) => {
     e.stopPropagation();
+    e.preventDefault();
     try {
       const response = await fetch(`/api/search/chat/sessions/${sessionId}`, {
         method: "DELETE",
       });
       if (response.ok) {
+        toast.success("Session deleted");
         await loadSessions();
         if (currentSessionId === sessionId) {
           setCurrentSessionId(null);
           setMessages([]);
           setIsCurrentSessionActive(true);
         }
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        toast.error("Failed to delete session", {
+          description: errorData.error || "An error occurred",
+        });
       }
     } catch (error) {
       console.error("Failed to delete session:", error);
+      toast.error("Failed to delete session", {
+        description: error instanceof Error ? error.message : "An error occurred",
+      });
     }
   };
 
@@ -321,11 +338,18 @@ export function ChatInterface() {
 
       const data = await response.json();
 
+      // Debug logging
+      console.log("API Response:", { 
+        hasResults: !!data.results, 
+        resultsLength: data.results?.length || 0,
+        results: data.results?.slice(0, 2) // Log first 2 results for debugging
+      });
+
       // Add assistant message
       const assistantMessage: ChatMessage = {
         role: "assistant",
         content: data.response || data.message || "Here are the search results:",
-        results: data.results || [],
+        results: Array.isArray(data.results) ? data.results : [],
       };
       setMessages((prev) => [...prev, assistantMessage]);
 
@@ -420,12 +444,26 @@ export function ChatInterface() {
                     <SelectGroup>
                       <SelectLabel>Active</SelectLabel>
                       {activeSessions.map((session) => (
-                        <SelectItem key={session.sessionId} value={session.sessionId}>
-                          <div className="flex items-center justify-between w-full gap-2">
-                            <span className="truncate">{session.lastQuery || "New Chat"}</span>
-                            <span className="text-xs text-muted-foreground shrink-0">
-                              {new Date(session.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                            </span>
+                        <SelectItem 
+                          key={session.sessionId} 
+                          value={session.sessionId}
+                          className="group/item"
+                        >
+                          <div className="flex items-center justify-between w-full gap-2 flex-1 min-w-0">
+                            <div className="flex items-center gap-2 flex-1 min-w-0">
+                              <span className="truncate">{session.lastQuery || "New Chat"}</span>
+                              <span className="text-xs text-muted-foreground shrink-0">
+                                {new Date(session.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                              </span>
+                            </div>
+                            <button
+                              onClick={(e) => deleteSession(session.sessionId, e)}
+                              className="opacity-0 group-hover/item:opacity-100 transition-opacity p-1 hover:bg-destructive/10 rounded shrink-0 pointer-events-auto"
+                              aria-label="Delete session"
+                              type="button"
+                            >
+                              <Trash2 className="size-3.5 text-destructive pointer-events-none" />
+                            </button>
                           </div>
                         </SelectItem>
                       ))}
@@ -435,12 +473,26 @@ export function ChatInterface() {
                     <SelectGroup>
                       <SelectLabel>History</SelectLabel>
                       {inactiveSessions.map((session) => (
-                        <SelectItem key={session.sessionId} value={session.sessionId}>
-                          <div className="flex items-center justify-between w-full gap-2">
-                            <span className="truncate">{session.lastQuery || "New Chat"}</span>
-                            <span className="text-xs text-muted-foreground shrink-0">
-                              {new Date(session.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                            </span>
+                        <SelectItem 
+                          key={session.sessionId} 
+                          value={session.sessionId}
+                          className="group/item"
+                        >
+                          <div className="flex items-center justify-between w-full gap-2 flex-1 min-w-0">
+                            <div className="flex items-center gap-2 flex-1 min-w-0">
+                              <span className="truncate">{session.lastQuery || "New Chat"}</span>
+                              <span className="text-xs text-muted-foreground shrink-0">
+                                {new Date(session.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                              </span>
+                            </div>
+                            <button
+                              onClick={(e) => deleteSession(session.sessionId, e)}
+                              className="opacity-0 group-hover/item:opacity-100 transition-opacity p-1 hover:bg-destructive/10 rounded shrink-0 pointer-events-auto"
+                              aria-label="Delete session"
+                              type="button"
+                            >
+                              <Trash2 className="size-3.5 text-destructive pointer-events-none" />
+                            </button>
                           </div>
                         </SelectItem>
                       ))}
@@ -543,11 +595,11 @@ export function ChatInterface() {
                     </div>
 
                     {/* Show results if available */}
-                    {message.role === "assistant" &&
-                      message.results &&
-                      message.results.length > 0 && (
-                        <div className="w-full space-y-3 sm:space-y-4 mt-1">
-                          {message.results.map((result, idx) => (
+                    {message.role === "assistant" && (
+                      <>
+                        {message.results && message.results.length > 0 ? (
+                          <div className="w-full space-y-3 sm:space-y-4 mt-1">
+                            {message.results.map((result, idx) => (
                             <Card
                               key={result.builderId}
                               className="border-2 hover:border-primary/30 transition-all duration-200 hover:shadow-lg group overflow-hidden"
@@ -637,9 +689,11 @@ export function ChatInterface() {
                                 </div>
                               </CardContent>
                             </Card>
-                          ))}
-                        </div>
-                      )}
+                            ))}
+                          </div>
+                        ) : null}
+                      </>
+                    )}
                   </div>
                 </div>
               ))}
