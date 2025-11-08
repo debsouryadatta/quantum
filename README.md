@@ -103,6 +103,3 @@ pnpm db:seed
 pnpm dev
 ```
 
-## License
-
-MIT
