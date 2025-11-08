@@ -49,6 +49,9 @@ export default function Home() {
               <p className="mt-6 text-lg leading-8 text-muted-foreground sm:text-xl max-w-2xl mx-auto">
                 Find the right teammate for your hackathon project. Search by skills, experience, and what you're actually building—not just keywords.
               </p>
+              <p className="mt-4 text-sm text-muted-foreground">
+                A side project built at <span className="font-medium text-foreground">Devfolio Tryout</span>
+              </p>
 
               {/* Search Bar */}
               <form onSubmit={handleSearch} className="mt-10">
