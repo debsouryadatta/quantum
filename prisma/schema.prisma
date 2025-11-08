@@ -1,0 +1,229 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [vector]
+}
+
+enum Role {
+  frontend
+  backend
+  fullstack
+  design
+  product
+  data
+  ml
+}
+
+enum ExperienceLevel {
+  beginner
+  intermediate
+  advanced
+  expert
+}
+
+enum AvailabilityStatus {
+  available
+  busy
+  not_looking
+}
+
+enum RemotePreference {
+  remote
+  hybrid
+  in_person
+  flexible
+}
+
+enum SkillCategory {
+  language
+  framework
+  tool
+  domain
+  soft_skill
+}
+
+enum ProficiencyLevel {
+  beginner
+  intermediate
+  advanced
+  expert
+}
+
+enum AgentPhase {
+  planning
+  executing
+  evaluating
+  refining
+  complete
+}
+
+model Builder {
+  id        String   @id @default(uuid())
+  clerkId   String   @unique @map("clerk_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Basic Info
+  name      String
+  email     String
+  bio       String?  @db.VarChar(500)
+  avatarUrl String?  @map("avatar_url")
+  location  String?
+  timezone  String?
+
+  // Professional Info
+  role              Role            @default(fullstack)
+  experienceLevel   ExperienceLevel @default(intermediate) @map("experience_level")
+  yearsOfExperience Int             @default(0) @map("years_of_experience")
+
+  // Availability
+  availabilityStatus      AvailabilityStatus @default(available) @map("availability_status")
+  availabilityHoursPerWeek Int?              @map("availability_hours_per_week")
+  preferredWorkingHours    String?           @map("preferred_working_hours")
+
+  // Preferences (stored as JSON)
+  preferencesTeamSize        Json? @map("preferences_team_size") // number[]
+  preferencesRemotePreference RemotePreference? @map("preferences_remote_preference")
+  preferencesHackathonTypes  Json? @map("preferences_hackathon_types") // string[]
+  preferencesCommunicationStyle String? @map("preferences_communication_style")
+  preferencesInterests        Json? @map("preferences_interests") // string[]
+
+  // Social Links
+  github   String?
+  linkedin String?
+  twitter  String?
+  portfolio String?
+
+  // Search Metadata - Vector embeddings (1536 dimensions for OpenAI ada-002)
+  profileEmbedding Unsupported("vector(1536)")? @map("profile_embedding")
+  bioEmbedding     Unsupported("vector(1536)")? @map("bio_embedding")
+
+  // Full-text search vector
+  searchVector Unsupported("tsvector")? @map("search_vector")
+
+  // Analytics
+  searchAppearances Int @default(0) @map("search_appearances")
+  profileViews      Int @default(0) @map("profile_views")
+  teamUps           Int @default(0) @map("team_ups")
+
+  // Relations
+  skills     Skill[]
+  projects   Project[]
+  searchLogs SearchLog[]
+
+  @@index([clerkId])
+  @@index([role, experienceLevel, availabilityStatus])
+  @@index([availabilityStatus])
+  @@map("builders")
+}
+
+model Skill {
+  id        String   @id @default(uuid())
+  builderId String   @map("builder_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  name              String            @db.VarChar(100)
+  category          SkillCategory     @default(language)
+  proficiencyLevel  ProficiencyLevel  @default(intermediate) @map("proficiency_level")
+  yearsOfExperience Int?              @map("years_of_experience")
+  endorsed          Boolean           @default(false)
+
+  // Vector representation
+  embedding Unsupported("vector(1536)")?
+
+  // Relations
+  builder Builder @relation(fields: [builderId], references: [id], onDelete: Cascade)
+
+  @@unique([builderId, name])
+  @@index([builderId])
+  @@index([category])
+  @@map("skills")
+}
+
+model Project {
+  id        String   @id @default(uuid())
+  builderId String   @map("builder_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  title       String
+  description String  @db.VarChar(1000)
+  techStack   Json    @map("tech_stack") // string[]
+  role        String
+  impact      String?
+  url         String?
+  imageUrl    String? @map("image_url")
+
+  // Temporal
+  startDate DateTime @map("start_date")
+  endDate   DateTime? @map("end_date")
+
+  // Metadata
+  embedding Unsupported("vector(1536)")?
+
+  // Relations
+  builder Builder @relation(fields: [builderId], references: [id], onDelete: Cascade)
+
+  @@index([builderId])
+  @@index([startDate])
+  @@map("projects")
+}
+
+model SearchLog {
+  id        String   @id @default(uuid())
+  sessionId String   @map("session_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  query          String
+  queryEmbedding Unsupported("vector(1536)")? @map("query_embedding")
+
+  // Agent reasoning
+  plannerThought  Json?   @map("planner_thought")
+  executionSteps  Json?   @map("execution_steps") // jsonb[]
+  evaluationScore Float?  @map("evaluation_score")
+  refinementCount Int     @default(0) @map("refinement_count")
+
+  // Results
+  results      Json?  // jsonb[]
+  topResultIds Json?  @map("top_result_ids") // string[]
+
+  // Interaction
+  clickedResults Json?  @map("clicked_results") // string[]
+  feedbackScore  Float? @map("feedback_score")
+
+  // Performance
+  latencyMs     Int @default(0) @map("latency_ms")
+  llmCallsCount Int @default(0) @map("llm_calls_count")
+
+  // Relations
+  builderId String?  @map("builder_id")
+  builder   Builder? @relation(fields: [builderId], references: [id], onDelete: SetNull)
+
+  @@index([sessionId])
+  @@index([createdAt])
+  @@index([builderId])
+  @@map("search_logs")
+}
+
+model AgentState {
+  id        String     @id @default(uuid())
+  sessionId String     @map("session_id")
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+
+  currentPhase AgentPhase @default(planning) @map("current_phase")
+  state         Json
+
+  @@index([sessionId])
+  @@index([currentPhase])
+  @@map("agent_states")
+}

@@ -1,0 +1,783 @@
+[
+  {
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "bio": "Energetic frontend developer passionate about building responsive web applications. I love creating intuitive user interfaces and enhancing user experience.",
+    "role": "frontend",
+    "experienceLevel": "intermediate",
+    "yearsOfExperience": 3,
+    "location": "San Francisco, CA, USA",
+    "timezone": "PST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 20,
+    "preferredWorkingHours": "9am-1pm",
+    "github": "https://github.com/alicejohnson",
+    "linkedin": "https://linkedin.com/in/alicejohnson",
+    "twitter": null,
+    "portfolio": "https://alicejohnson.dev",
+    "skills": [
+      {
+        "name": "JavaScript",
+        "category": "language",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "React",
+        "category": "framework",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "CSS",
+        "category": "language",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Figma",
+        "category": "tool",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "Responsive Design",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      }
+    ],
+    "projects": [
+      {
+        "title": "Portfolio Website",
+        "description": "Designed and developed a personal portfolio website using React and CSS for showcasing my projects and skills. Implemented responsive design principles to ensure accessibility across devices.",
+        "techStack": ["React", "CSS"],
+        "role": "Developer",
+        "impact": "Enhanced my visibility as a frontend developer and attracted numerous freelance opportunities.",
+        "url": "https://alicejohnson.dev",
+        "startDate": "2022-01-01",
+        "endDate": "2022-03-01"
+      },
+      {
+        "title": "E-commerce Platform",
+        "description": "Contributed to the frontend development of an e-commerce application that improved online shopping experience, integrating REST APIs for real-time data fetch.",
+        "techStack": ["JavaScript", "React", "Axios"],
+        "role": "Frontend Developer",
+        "impact": "Increased user satisfaction by providing a seamless shopping experience.",
+        "url": null,
+        "startDate": "2023-02-01",
+        "endDate": "2023-06-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [3, 4, 5],
+      "remotePreference": "remote",
+      "hackathonTypes": ["social impact", "healthcare", "education"],
+      "communicationStyle": "collaborative",
+      "interests": ["UI/UX", "web accessibility", "coffee brewing"]
+    }
+  },
+  {
+    "name": "Marco Rossi",
+    "email": "marco.rossi@example.com",
+    "bio": "Backend developer from Italy specializing in creating robust APIs and database management. Always eager to optimize applications and learn new technologies.",
+    "role": "backend",
+    "experienceLevel": "advanced",
+    "yearsOfExperience": 5,
+    "location": "Milan, Italy",
+    "timezone": "CET",
+    "availabilityStatus": "busy",
+    "availabilityHoursPerWeek": 10,
+    "preferredWorkingHours": null,
+    "github": "https://github.com/marcorossi",
+    "linkedin": "https://linkedin.com/in/marcorossi",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "Python",
+        "category": "language",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "Django",
+        "category": "framework",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "PostgreSQL",
+        "category": "tool",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "REST APIs",
+        "category": "domain",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "Team Leadership",
+        "category": "soft_skill",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      }
+    ],
+    "projects": [
+      {
+        "title": "Inventory Management System",
+        "description": "Led backend development of an inventory management system for a retail chain, implementing Django and PostgreSQL to support a user-friendly interface for stock management.",
+        "techStack": ["Python", "Django", "PostgreSQL"],
+        "role": "Lead Developer",
+        "impact": "Streamlined operations and reduced stock discrepancies by 40%.",
+        "url": null,
+        "startDate": "2021-04-01",
+        "endDate": "2021-12-01"
+      },
+      {
+        "title": "Social Media API",
+        "description": "Developed a comprehensive social media API that allows third-party developers to access and analyze user-generated content, utilizing Django and JWT for authentication.",
+        "techStack": ["Python", "Django", "MongoDB"],
+        "role": "Backend Developer",
+        "impact": "Facilitated integration for over 100 applications and improved data analytics capabilities.",
+        "url": "https://github.com/marcorossi/social-media-api",
+        "startDate": "2022-01-10",
+        "endDate": "2023-01-30"
+      }
+    ],
+    "preferences": {
+      "teamSize": [4, 5],
+      "remotePreference": "hybrid",
+      "hackathonTypes": ["technology", "sustainability"],
+      "communicationStyle": "direct",
+      "interests": ["open-source", "database optimization", "traveling"]
+    }
+  },
+  {
+    "name": "Mei Wong",
+    "email": "mei.wong@example.com",
+    "bio": "A fullstack developer from Singapore with a passion for building scalable web applications. I enjoy tackling both frontend and backend challenges.",
+    "role": "fullstack",
+    "experienceLevel": "intermediate",
+    "yearsOfExperience": 3,
+    "location": "Singapore",
+    "timezone": "SGT",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 30,
+    "preferredWorkingHours": "10am-4pm",
+    "github": "https://github.com/meiwong",
+    "linkedin": "https://linkedin.com/in/meiwong",
+    "twitter": "https://twitter.com/meiwongdev",
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "JavaScript",
+        "category": "language",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Node.js",
+        "category": "framework",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "MongoDB",
+        "category": "tool",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "Express.js",
+        "category": "framework",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "UX Research",
+        "category": "domain",
+        "proficiencyLevel": "beginner",
+        "yearsOfExperience": 1
+      }
+    ],
+    "projects": [
+      {
+        "title": "Recipe Aggregator",
+        "description": "Built a fullstack recipe aggregator web app that allows users to search, save, and share recipes from various websites utilizing Node.js and MongoDB for the backend.",
+        "techStack": ["Node.js", "Express.js", "MongoDB"],
+        "role": "Fullstack Developer",
+        "impact": "Attracted 5,000+ users within the first month of launch, demonstrating a high demand for interactive cooking resources.",
+        "url": null,
+        "startDate": "2022-06-01",
+        "endDate": "2023-01-01"
+      },
+      {
+        "title": "Event Management Platform",
+        "description": "Developed a platform for managing events with features like registration, scheduling, and notifications. Collaborated in a team of 4 to implement a user-friendly interface with React.",
+        "techStack": ["React", "Node.js", "PostgreSQL"],
+        "role": "Fullstack Developer",
+        "impact": "Improved event attendance rates by 30% through better user engagement tools.",
+        "url": null,
+        "startDate": "2021-01-01",
+        "endDate": "2021-12-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [2, 3, 4],
+      "remotePreference": "flexible",
+      "hackathonTypes": ["healthcare", "social good"],
+      "communicationStyle": "friendly",
+      "interests": ["cooking", "animation", "photography"]
+    }
+  },
+  {
+    "name": "Liam Smith",
+    "email": "liam.smith@example.com",
+    "bio": "A passionate designer with a knack for creating stunning visuals that communicate effectively. I thrive on collaboration and love bringing ideas to life through design.",
+    "role": "design",
+    "experienceLevel": "advanced",
+    "yearsOfExperience": 6,
+    "location": "New York, NY, USA",
+    "timezone": "EST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 35,
+    "preferredWorkingHours": "11am-4pm",
+    "github": null,
+    "linkedin": "https://linkedin.com/in/liamsmith",
+    "twitter": null,
+    "portfolio": "https://liamsmithdesigns.com",
+    "skills": [
+      {
+        "name": "Figma",
+        "category": "tool",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "Adobe Illustrator",
+        "category": "tool",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "User Interface Design",
+        "category": "domain",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 6
+      },
+      {
+        "name": "Brand Strategy",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Communication",
+        "category": "soft_skill",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 6
+      }
+    ],
+    "projects": [
+      {
+        "title": "Healthcare App Redesign",
+        "description": "Redesigned a healthcare application to improve user accessibility and experience, implementing a more intuitive layout and modern visual aesthetics.",
+        "techStack": ["Figma", "Adobe Illustrator"],
+        "role": "Lead Designer",
+        "impact": "Increased user satisfaction ratings by 40% after the redesign.",
+        "url": null,
+        "startDate": "2022-01-01",
+        "endDate": "2022-06-01"
+      },
+      {
+        "title": "E-commerce Branding Project",
+        "description": "Developed branding and a complete redesign of an e-commerce website to enhance the user interface and improve sales performance.",
+        "techStack": ["Figma", "Adobe XD"],
+        "role": "Brand Designer",
+        "impact": "Boosted conversion rates by 25% through innovative design solutions and brand strategy.",
+        "url": null,
+        "startDate": "2023-03-01",
+        "endDate": "2023-06-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [3, 5],
+      "remotePreference": "remote",
+      "hackathonTypes": ["design", "startup"],
+      "communicationStyle": "collaborative",
+      "interests": ["graphic design", "travel", "virtual reality"]
+    }
+  },
+  {
+    "name": "Sofia González",
+    "email": "sofia.gonzalez@example.com",
+    "bio": "Product manager with 4 years of experience in agile environments, focusing on user-centered development and delivery of solutions that resonate with users.",
+    "role": "product",
+    "experienceLevel": "intermediate",
+    "yearsOfExperience": 4,
+    "location": "Madrid, Spain",
+    "timezone": "CET",
+    "availabilityStatus": "not_looking",
+    "availabilityHoursPerWeek": null,
+    "preferredWorkingHours": null,
+    "github": null,
+    "linkedin": "https://linkedin.com/in/sofiagonzalez",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "Agile Methodologies",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "User Research",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "JIRA",
+        "category": "tool",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Communication",
+        "category": "soft_skill",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "Strategic Planning",
+        "category": "soft_skill",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      }
+    ],
+    "projects": [
+      {
+        "title": "Mobile Banking App",
+        "description": "Managed the development of a mobile banking application, focusing on enhancing user experience and security features based on user feedback.",
+        "techStack": ["Agile", "JIRA"],
+        "role": "Product Manager",
+        "impact": "Successfully launched the app within a 6-month timeline, which gained 10,000 downloads on release.",
+        "url": null,
+        "startDate": "2021-10-01",
+        "endDate": "2022-04-01"
+      },
+      {
+        "title": "Retail Inventory App",
+        "description": "Led the product strategy for a retail inventory management app, unifying the customer and store data for real-time analysis and stock forecasting.",
+        "techStack": ["Agile", "User Research"],
+        "role": "Product Owner",
+        "impact": "Achieved a 20% increase in inventory accuracy across stores.",
+        "url": null,
+        "startDate": "2022-05-01",
+        "endDate": "2023-06-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [3],
+      "remotePreference": "in_person",
+      "hackathonTypes": ["business", "social good"],
+      "communicationStyle": "assertive",
+      "interests": ["product strategy", "agile methodologies", "sports"]
+    }
+  },
+  {
+    "name": "Rajesh Kumar",
+    "email": "rajesh.kumar@example.com",
+    "bio": "Data scientist with a strong background in machine learning and statistics. I enjoy analyzing data to uncover insights that drive business decisions.",
+    "role": "data",
+    "experienceLevel": "intermediate",
+    "yearsOfExperience": 3,
+    "location": "Bangalore, India",
+    "timezone": "IST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 25,
+    "preferredWorkingHours": "9am-2pm",
+    "github": "https://github.com/rajeshkumar",
+    "linkedin": "https://linkedin.com/in/rajeshkumar",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "Python",
+        "category": "language",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Pandas",
+        "category": "tool",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "Machine Learning Basics",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "SQL",
+        "category": "tool",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "Data Visualization",
+        "category": "domain",
+        "proficiencyLevel": "beginner",
+        "yearsOfExperience": 1
+      }
+    ],
+    "projects": [
+      {
+        "title": "Customer Segmentation Analysis",
+        "description": "Conducted an analysis on customer data to identify unique segments using clustering algorithms, aiding targeted marketing strategies.",
+        "techStack": ["Python", "Pandas"],
+        "role": "Data Scientist",
+        "impact": "Enabled marketing team to personalize campaigns effectively, which led to a 15% increase in engagement.",
+        "url": null,
+        "startDate": "2022-01-01",
+        "endDate": "2022-03-01"
+      },
+      {
+        "title": "Sales Forecasting Model",
+        "description": "Developed a machine learning model to predict sales trends, incorporating various factors such as seasonality, helping the sales team strategize better.",
+        "techStack": ["Python", "SQL"],
+        "role": "Data Analyst",
+        "impact": "Improved forecasting accuracy by 20%, optimizing inventory management.",
+        "url": null,
+        "startDate": "2023-01-01",
+        "endDate": "2023-05-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [2, 3],
+      "remotePreference": "remote",
+      "hackathonTypes": ["ML challenges", "data science", "community outreach"],
+      "communicationStyle": "data-driven",
+      "interests": ["AI ethics", "data privacy", "travel"]
+    }
+  },
+  {
+    "name": "Yuki Tanaka",
+    "email": "yuki.tanaka@example.com",
+    "bio": "Aspiring machine learning engineer with a passion for developing algorithms that can learn and adapt. I thrive on challenges and love solving complex problems.",
+    "role": "ml",
+    "experienceLevel": "beginner",
+    "yearsOfExperience": 1,
+    "location": "Tokyo, Japan",
+    "timezone": "JST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 10,
+    "preferredWorkingHours": "2pm-5pm",
+    "github": "https://github.com/yukitanaka",
+    "linkedin": "https://linkedin.com/in/yukitanaka",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "Python",
+        "category": "language",
+        "proficiencyLevel": "beginner",
+        "yearsOfExperience": 1
+      },
+      {
+        "name": "TensorFlow",
+        "category": "framework",
+        "proficiencyLevel": "beginner",
+        "yearsOfExperience": 1
+      },
+      {
+        "name": "Data Analysis",
+        "category": "domain",
+        "proficiencyLevel": "beginner",
+        "yearsOfExperience": 1
+      },
+      {
+        "name": "NumPy",
+        "category": "tool",
+        "proficiencyLevel": "beginner",
+        "yearsOfExperience": 1
+      },
+      {
+        "name": "Team Collaboration",
+        "category": "soft_skill",
+        "proficiencyLevel": "beginner",
+        "yearsOfExperience": 1
+      }
+    ],
+    "projects": [
+      {
+        "title": "Image Classification Model",
+        "description": "Developed an image classification model using TensorFlow to recognize handwritten digits, participating in a Kaggle competition and achieving a good accuracy rate.",
+        "techStack": ["Python", "TensorFlow"],
+        "role": "Machine Learning Engineer",
+        "impact": "Gained valuable experience in machine learning principles and applications.",
+        "url": null,
+        "startDate": "2023-03-01",
+        "endDate": "2023-06-01"
+      },
+      {
+        "title": "Stock Price Predictor",
+        "description": "Created a simple model to predict stock prices based on historical data using Python, learning fundamental concepts of time series analysis.",
+        "techStack": ["Python", "NumPy"],
+        "role": "Junior Data Scientist",
+        "impact": "Acquired foundational skills in data handling and analysis techniques.",
+        "url": null,
+        "startDate": "2022-06-01",
+        "endDate": "2023-02-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [2, 3],
+      "remotePreference": "flexible",
+      "hackathonTypes": ["AI challenges", "social impact"],
+      "communicationStyle": "enthusiastic",
+      "interests": ["technology", "video games", "anime"]
+    }
+  },
+  {
+    "name": "David Chen",
+    "email": "david.chen@example.com",
+    "bio": "Experienced backend developer specializing in microservices architecture and cloud infrastructure. Passionate about building scalable systems that handle millions of requests.",
+    "role": "backend",
+    "experienceLevel": "expert",
+    "yearsOfExperience": 8,
+    "location": "Seattle, WA, USA",
+    "timezone": "PST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 15,
+    "preferredWorkingHours": "evenings",
+    "github": "https://github.com/davidchen",
+    "linkedin": "https://linkedin.com/in/davidchen",
+    "twitter": "https://twitter.com/davidchen",
+    "portfolio": "https://davidchen.dev",
+    "skills": [
+      {
+        "name": "Go",
+        "category": "language",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 5
+      },
+      {
+        "name": "Kubernetes",
+        "category": "tool",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "AWS",
+        "category": "tool",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 6
+      },
+      {
+        "name": "Microservices",
+        "category": "domain",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 6
+      },
+      {
+        "name": "System Design",
+        "category": "domain",
+        "proficiencyLevel": "expert",
+        "yearsOfExperience": 8
+      }
+    ],
+    "projects": [
+      {
+        "title": "Distributed Payment System",
+        "description": "Architected and implemented a distributed payment processing system handling over 1 million transactions daily using Go and Kubernetes.",
+        "techStack": ["Go", "Kubernetes", "PostgreSQL"],
+        "role": "Senior Backend Engineer",
+        "impact": "Reduced latency by 60% and improved system reliability to 99.99% uptime.",
+        "url": null,
+        "startDate": "2020-01-01",
+        "endDate": "2022-06-01"
+      },
+      {
+        "title": "Cloud Infrastructure Platform",
+        "description": "Built a cloud infrastructure management platform that automates deployment and scaling of microservices across multiple regions.",
+        "techStack": ["Go", "AWS", "Kubernetes"],
+        "role": "Lead Engineer",
+        "impact": "Enabled teams to deploy 10x faster and reduced infrastructure costs by 30%.",
+        "url": "https://github.com/davidchen/cloud-platform",
+        "startDate": "2022-07-01",
+        "endDate": "2023-12-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [4, 5, 6],
+      "remotePreference": "remote",
+      "hackathonTypes": ["infrastructure", "cloud", "open source"],
+      "communicationStyle": "technical",
+      "interests": ["distributed systems", "cloud computing", "open source"]
+    }
+  },
+  {
+    "name": "Emma Wilson",
+    "email": "emma.wilson@example.com",
+    "bio": "Creative fullstack developer with a passion for building beautiful and functional web applications. I love working with modern frameworks and creating seamless user experiences.",
+    "role": "fullstack",
+    "experienceLevel": "advanced",
+    "yearsOfExperience": 6,
+    "location": "London, UK",
+    "timezone": "GMT",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 25,
+    "preferredWorkingHours": "mornings",
+    "github": "https://github.com/emmawilson",
+    "linkedin": "https://linkedin.com/in/emmawilson",
+    "twitter": null,
+    "portfolio": "https://emmawilson.dev",
+    "skills": [
+      {
+        "name": "TypeScript",
+        "category": "language",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 4
+      },
+      {
+        "name": "Next.js",
+        "category": "framework",
+        "proficiencyLevel": "advanced",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "PostgreSQL",
+        "category": "tool",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 3
+      },
+      {
+        "name": "GraphQL",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 2
+      },
+      {
+        "name": "UI/UX Design",
+        "category": "domain",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 4
+      }
+    ],
+    "projects": [
+      {
+        "title": "E-learning Platform",
+        "description": "Developed a comprehensive e-learning platform with video streaming, quizzes, and progress tracking. Built with Next.js and PostgreSQL, featuring real-time updates and analytics.",
+        "techStack": ["Next.js", "TypeScript", "PostgreSQL"],
+        "role": "Fullstack Developer",
+        "impact": "Served over 50,000 students and achieved 95% user satisfaction rate.",
+        "url": "https://elearning-platform.com",
+        "startDate": "2021-03-01",
+        "endDate": "2022-09-01"
+      },
+      {
+        "title": "Task Management SaaS",
+        "description": "Built a task management SaaS application with team collaboration features, real-time notifications, and advanced filtering capabilities.",
+        "techStack": ["Next.js", "GraphQL", "PostgreSQL"],
+        "role": "Lead Developer",
+        "impact": "Acquired 1,000+ paying customers within 6 months of launch.",
+        "url": null,
+        "startDate": "2022-10-01",
+        "endDate": "2023-08-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [3, 4],
+      "remotePreference": "hybrid",
+      "hackathonTypes": ["web apps", "education", "productivity"],
+      "communicationStyle": "collaborative",
+      "interests": ["web development", "design", "reading"]
+    }
+  },
+  {
+    "name": "Alex Kim",
+    "email": "alex.kim@example.com",
+    "bio": "Frontend developer focused on creating accessible and performant web experiences. I'm passionate about modern CSS, React, and making the web better for everyone.",
+    "role": "frontend",
+    "experienceLevel": "beginner",
+    "yearsOfExperience": 1,
+    "location": "Vancouver, Canada",
+    "timezone": "PST",
+    "availabilityStatus": "available",
+    "availabilityHoursPerWeek": 20,
+    "preferredWorkingHours": "flexible",
+    "github": "https://github.com/alexkim",
+    "linkedin": "https://linkedin.com/in/alexkim",
+    "twitter": null,
+    "portfolio": null,
+    "skills": [
+      {
+        "name": "HTML",
+        "category": "language",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 1
+      },
+      {
+        "name": "CSS",
+        "category": "language",
+        "proficiencyLevel": "intermediate",
+        "yearsOfExperience": 1
+      },
+      {
+        "name": "React",
+        "category": "framework",
+        "proficiencyLevel": "beginner",
+        "yearsOfExperience": 1
+      },
+      {
+        "name": "Accessibility",
+        "category": "domain",
+        "proficiencyLevel": "beginner",
+        "yearsOfExperience": 1
+      },
+      {
+        "name": "Git",
+        "category": "tool",
+        "proficiencyLevel": "beginner",
+        "yearsOfExperience": 1
+      }
+    ],
+    "projects": [
+      {
+        "title": "Personal Blog",
+        "description": "Created a personal blog using React and modern CSS, focusing on accessibility and responsive design. Implemented dark mode and keyboard navigation.",
+        "techStack": ["React", "CSS"],
+        "role": "Developer",
+        "impact": "Received positive feedback on accessibility features and design.",
+        "url": "https://alexkim.blog",
+        "startDate": "2023-05-01",
+        "endDate": "2023-07-01"
+      },
+      {
+        "title": "Weather Dashboard",
+        "description": "Built a weather dashboard application that displays current conditions and forecasts. Learned about API integration and state management.",
+        "techStack": ["React", "JavaScript"],
+        "role": "Frontend Developer",
+        "impact": "Improved my understanding of React hooks and API consumption.",
+        "url": null,
+        "startDate": "2023-08-01",
+        "endDate": "2023-09-01"
+      }
+    ],
+    "preferences": {
+      "teamSize": [2, 3],
+      "remotePreference": "remote",
+      "hackathonTypes": ["accessibility", "web apps", "social good"],
+      "communicationStyle": "friendly",
+      "interests": ["web accessibility", "CSS", "hiking"]
+    }
+  }
+]
+
